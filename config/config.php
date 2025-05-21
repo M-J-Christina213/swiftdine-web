@@ -1,15 +1,12 @@
 <?php
-// config/config.php
+$host = 'localhost';
+$dbname = 'swiftdine'; 
+$username = 'root'; 
+$password = ''; 
 
-$host = 'localhost';        // Usually localhost if running locally
-$dbname = 'swift_dine';     // Your database name
-$user = 'root';             // Your MySQL username
-$pass = '';                 // Your MySQL password (empty if none)
+$conn = new mysqli($host, $username, $password, $dbname);
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    // Set error mode to exceptions
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+?>
