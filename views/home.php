@@ -1,74 +1,173 @@
+<?php include __DIR__ . '/partials/header.php'; ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SwiftDine - Discover Sri Lanka's Best Eats</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flavours of Sri Lanka</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom colors */
+    :root {
+      --orange: #FF7A00;
+      --gold: #FFD700;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-white text-black font-poppins">
 
-<!-- Navigation Bar -->
-<header class="bg-white shadow-md py-4">
-    <div class="container mx-auto flex justify-between items-center px-6">
-        <!-- Logo -->
-        <div class="flex items-center space-x-2">
-            <img src="assets/images/logo.png" alt="SwiftDine Logo" class="w-12 h-12">
-            <span class="text-2xl font-bold text-red-600">SwiftDine</span>
-        </div>
-        
-        <!-- Nav Links -->
-        <nav class="hidden md:flex space-x-6">
-            <a href="#" class="text-gray-700 hover:text-red-500">Home</a>
-            <a href="#" class="text-gray-700 hover:text-red-500">Restaurants</a>
-            <a href="#" class="text-gray-700 hover:text-red-500">Browse Menu</a>
-            <a href="#" class="text-gray-700 hover:text-red-500">Food Guide</a>
-            <a href="#" class="text-gray-700 hover:text-red-500">Special Offers</a>
-            <a href="#" class="text-gray-700 hover:text-red-500">Track Order</a>
-        </nav>
+  <!-- Header -->
+  
+  
 
-        <!-- Buttons (Login & Cart) -->
-        <div class="flex space-x-4">
-            <button class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800">Login</button>
-            <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 flex items-center">
-                🛒 <span class="ml-2">Cart</span>
-            </button>
-        </div>
+  <!-- Section 1: Hero -->
+<section
+  class="relative bg-cover bg-center text-white max-w-7xl mx-auto p-10 md:p-20 rounded-xl overflow-hidden flex flex-col md:flex-row items-center gap-10"
+  style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80');"
+>
+  <!-- Overlay for transparency -->
+  <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+
+  <div class="relative md:flex-1 max-w-xl z-10 flex flex-col justify-center w-full">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-6 drop-shadow-lg">
+      Discover the True Flavours of Sri Lanka
+    </h1>
+    <p class="text-lg md:text-xl font-medium mb-10 drop-shadow-md">
+      Your gateway to authentic Sri Lankan restaurants and special offers!
+    </p>
+
+    <!-- Search container centered -->
+    <div class="flex max-w-md mx-auto">
+      <input
+        type="text"
+        placeholder="Search your favorite food or location"
+        class="flex-grow px-5 py-4 rounded-l-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+      />
+      <button
+        class="bg-orange-600 hover:bg-orange-700 px-7 py-4 rounded-r-md font-semibold transition"
+      >
+        Search
+      </button>
     </div>
-</header>
 
-<!-- Hero Section -->
-<section class="relative bg-cover bg-center py-16" style="background-image: url('assets/images/banner.jpg');">
-    <div class="container mx-auto flex items-center justify-between px-6">
-        <!-- Left Side (Search & Order Button) -->
-        <div class="text-white w-1/2">
-            <h1 class="text-4xl font-bold">#1 Food Delivery Experience in Sri Lanka</h1>
-            <p class="text-lg mt-2">Experience the flavors of Sri Lanka from street food to fine dining.</p>
-
-            <!-- Search Bar -->
-            <div class="mt-6">
-                <input type="text" placeholder="Search dishes or restaurants..." class="p-3 w-2/3 rounded bg-white text-gray-700 shadow-md">
-                <button class="bg-red-500 text-white px-6 py-3 rounded hover:bg-red-600 ml-2">Search</button>
-            </div>
-
-            <!-- Order Now Button -->
-            <button class="mt-6 bg-orange-500 text-white px-6 py-3 rounded hover:bg-orange-600 text-lg font-semibold">Why Wait? Let's Order Now!</button>
-        </div>
-
-        <!-- Right Side (Four Images) -->
-        <div class="grid grid-cols-2 gap-4 w-1/2">
-            <img src="assets/images/food1.jpg" alt="Sri Lankan Dish 1" class="rounded-lg">
-            <img src="assets/images/food2.jpg" alt="Sri Lankan Dish 2" class="rounded-lg">
-            <img src="assets/images/food3.jpg" alt="Sri Lankan Dish 3" class="rounded-lg">
-            <img src="assets/images/food4.jpg" alt="Sri Lankan Dish 4" class="rounded-lg">
-        </div>
+    <div
+      class="flex justify-center md:justify-start gap-10 mt-12 font-semibold text-lg select-none drop-shadow-md"
+    >
+      <div>
+        <span class="block text-3xl font-extrabold">200+</span> Restaurants
+      </div>
+      <div>
+        <span class="block text-3xl font-extrabold">3500+</span> Dishes
+      </div>
+      <div>
+        <span class="block text-3xl font-extrabold">15+</span> Locations
+      </div>
     </div>
+  </div>
+
+  <div
+    class="relative z-10 grid grid-cols-2 gap-5 md:flex md:justify-end md:gap-6 md:flex-wrap md:max-w-xl"
+  >
+    <img
+      src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=280&q=80"
+      alt="Dish 1"
+      class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+    />
+    <img
+      src="https://images.unsplash.com/photo-1516685018646-549d27d83b6b?auto=format&fit=crop&w=280&q=80"
+      alt="Dish 2"
+      class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+    />
+    <img
+      src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=280&q=80"
+      alt="Dish 3"
+      class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+    />
+    <img
+      src="https://images.unsplash.com/photo-1516685018646-549d27d83b6b?auto=format&fit=crop&w=280&q=80"
+      alt="Dish 4"
+      class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+    />
+  </div>
 </section>
 
-<!-- Footer -->
-<footer class="bg-gray-900 text-white text-center py-4">
-    <p>&copy; 2025 SwiftDine. All rights reserved.</p>
-</footer>
+
+  <!-- Section 2: Special Offers -->
+  <section id="special-offers" class="bg-[var(--gold)] text-black py-14 px-6 text-center">
+    <h2 class="text-3xl font-extrabold mb-8">Special Offers</h2>
+    <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <article class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold mb-2">20% Off on Rice & Curry</h3>
+        <p>Enjoy traditional rice and curry meals at discounted prices across select restaurants.</p>
+      </article>
+      <article class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold mb-2">Free Delivery Over $30</h3>
+        <p>Get your food delivered free of charge when you order over $30 from participating outlets.</p>
+      </article>
+      <article class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold mb-2">Buy 1 Get 1 Free - Desserts</h3>
+        <p>Indulge in authentic Sri Lankan desserts with our special buy one get one free deal.</p>
+      </article>
+      <article class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold mb-2">Exclusive Weekend Deals</h3>
+        <p>Save more with our exclusive weekend offers on select meals and combos.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Section 3: Explore Sri Lanka Map & Locations -->
+  <section id="explore" class="max-w-7xl mx-auto py-14 px-6">
+    <h2 class="text-3xl font-extrabold text-[var(--orange)] mb-8 text-center">Explore Sri Lanka</h2>
+    <form class="max-w-3xl mx-auto flex flex-col sm:flex-row gap-4 mb-10">
+      <input type="text" placeholder="Search by city or cuisine" class="flex-grow px-5 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--orange)]" />
+      <button type="submit" class="bg-[var(--orange)] text-white font-semibold px-8 py-3 rounded-md hover:bg-[#e46800] transition">Search</button>
+    </form>
+
+    <div class="bg-gray-100 rounded-xl h-72 max-w-5xl mx-auto mb-10 relative shadow-inner">
+      <!-- You can replace this div with actual interactive map -->
+      <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-500 text-lg font-medium">[Map Placeholder]</p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl mx-auto">
+      <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Colombo" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-[var(--orange)] mb-1">Colombo</h3>
+          <p class="text-gray-700 mb-3">Capital city with diverse cuisines and vibrant restaurants.</p>
+          <button class="w-full bg-black text-white py-2 rounded-md hover:bg-gray-900 transition">Explore</button>
+        </div>
+      </article>
+      <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Kandy" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-[var(--orange)] mb-1">Kandy</h3>
+          <p class="text-gray-700 mb-3">Famous for cultural heritage and delicious street food.</p>
+          <button class="w-full bg-black text-white py-2 rounded-md hover:bg-gray-900 transition">Explore</button>
+        </div>
+      </article>
+      <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1526483360626-3bfa7555069d?auto=format&fit=crop&w=400&q=80" alt="Galle" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-[var(--orange)] mb-1">Galle</h3>
+          <p class="text-gray-700 mb-3">Historic coastal town with fresh seafood delights.</p>
+          <button class="w-full bg-black text-white py-2 rounded-md hover:bg-gray-900 transition">Explore</button>
+        </div>
+      </article>
+      <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1502810190503-9a30deec65b8?auto=format&fit=crop&w=400&q=80" alt="Jaffna" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-[var(--orange)] mb-1">Jaffna</h3>
+          <p class="text-gray-700 mb-3">Northern city known for spicy flavors and unique dishes.</p>
+          <button class="w-full bg-black text-white py-2 rounded-md hover:bg-gray-900 transition">Explore</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8 mt-12 text-center font-medium">
+    &copy; 2025 Flavours of Sri Lanka. All rights reserved.
+  </footer>
 
 </body>
 </html>
