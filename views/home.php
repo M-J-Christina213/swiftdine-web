@@ -1,10 +1,10 @@
-<?php include __DIR__ . '/partials/header.php'; ?>
+<?php include __DIR__ . '/components/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flavours of Sri Lanka</title>
+  <title> Swiftdine </title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Custom colors */
@@ -16,81 +16,84 @@
 </head>
 <body class="bg-white text-black font-poppins">
 
-  <!-- Header -->
-  
-  
-
-  <!-- Section 1: Hero -->
+  <!-- Section 1: Hero full width -->
 <section
-  class="relative bg-cover bg-center text-white max-w-7xl mx-auto p-10 md:p-20 rounded-xl overflow-hidden flex flex-col md:flex-row items-center gap-10"
-  style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80');"
+  class="relative bg-cover bg-center text-white w-full p-10 md:p-20  overflow-hidden flex flex-col md:flex-row items-center gap-10"
+  style="background-image: url('../assets/images/buffet.jpg');"
 >
-  <!-- Overlay for transparency -->
+  <!-- Overlay -->
   <div class="absolute inset-0 bg-black bg-opacity-60"></div>
 
-  <div class="relative md:flex-1 max-w-xl z-10 flex flex-col justify-center w-full">
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-6 drop-shadow-lg">
-      Discover the True Flavours of Sri Lanka
-    </h1>
-    <p class="text-lg md:text-xl font-medium mb-10 drop-shadow-md">
-      Your gateway to authentic Sri Lankan restaurants and special offers!
-    </p>
+  <!-- Content container to control max width inside full width section -->
+  <div class="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto gap-10">
+    <!-- Left text & search -->
+    <div class="md:flex-1 max-w-xl flex flex-col justify-center w-full">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-6 drop-shadow-lg">
+        Discover the True Flavours of Sri Lanka
+      </h1>
+      <p class="text-lg md:text-xl font-medium mb-10 drop-shadow-md">
+        Your gateway to authentic Sri Lankan restaurants and special offers!
+      </p>
 
-    <!-- Search container centered -->
-    <div class="flex max-w-md mx-auto">
-      <input
-        type="text"
-        placeholder="Search your favorite food or location"
-        class="flex-grow px-5 py-4 rounded-l-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
-      />
-      <button
-        class="bg-orange-600 hover:bg-orange-700 px-7 py-4 rounded-r-md font-semibold transition"
+      <div class="flex max-w-md mx-auto md:mx-0">
+        <input
+          type="text"
+          placeholder="Search your favorite food or location"
+          class="flex-grow px-5 py-4 rounded-l-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+        />
+        <button
+          class="bg-orange-600 hover:bg-orange-700 px-7 py-4 rounded-r-md font-semibold transition"
+        >
+          Search
+        </button>
+      </div>
+
+      <div
+        class="flex justify-center md:justify-start gap-10 mt-12 font-semibold text-lg select-none drop-shadow-md"
       >
-        Search
-      </button>
+        <div>
+          <span class="block text-3xl font-extrabold">200+</span> Restaurants
+        </div>
+        <div>
+          <span class="block text-3xl font-extrabold">3500+</span> Dishes
+        </div>
+        <div>
+          <span class="block text-3xl font-extrabold">15+</span> Locations
+        </div>
+      </div>
     </div>
 
+    <!-- Right images -->
     <div
-      class="flex justify-center md:justify-start gap-10 mt-12 font-semibold text-lg select-none drop-shadow-md"
-    >
-      <div>
-        <span class="block text-3xl font-extrabold">200+</span> Restaurants
-      </div>
-      <div>
-        <span class="block text-3xl font-extrabold">3500+</span> Dishes
-      </div>
-      <div>
-        <span class="block text-3xl font-extrabold">15+</span> Locations
-      </div>
-    </div>
-  </div>
+  class="md:flex-1 grid grid-cols-2 gap-5 max-w-xl"
+>
+  <img
+    src="../assets/images/friends.jpg"
+    alt="Dish 1"
+    class="w-full h-52 object-cover  shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
 
-  <div
-    class="relative z-10 grid grid-cols-2 gap-5 md:flex md:justify-end md:gap-6 md:flex-wrap md:max-w-xl"
-  >
-    <img
-      src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=280&q=80"
-      alt="Dish 1"
-      class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-    />
-    <img
-      src="https://images.unsplash.com/photo-1516685018646-549d27d83b6b?auto=format&fit=crop&w=280&q=80"
-      alt="Dish 2"
-      class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-    />
-    <img
-      src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=280&q=80"
-      alt="Dish 3"
-      class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-    />
-    <img
-      src="https://images.unsplash.com/photo-1516685018646-549d27d83b6b?auto=format&fit=crop&w=280&q=80"
-      alt="Dish 4"
-      class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-    />
+  />
+  <img
+    src="../assets/images/chef.jpg"
+    alt="Dish 2"
+    class="w-full h-52 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+
+  />
+  <img
+    src="../assets/images/chef.jpg"
+    alt="Dish 3"
+    class="w-full h-52 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+
+  />
+  <img
+    src="../assets/images/friends.jpg"
+    alt="Dish 4"
+    class="w-full h-52 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+/>
+</div>
+
   </div>
 </section>
-
 
   <!-- Section 2: Special Offers -->
   <section id="special-offers" class="bg-[var(--gold)] text-black py-14 px-6 text-center">
