@@ -1,7 +1,7 @@
 <header class="bg-white text-orange-600 shadow-md py-4 px-6 flex items-center justify-between">
   <!-- Left: Logo -->
   <div class="flex items-center space-x-2">
-    <img src="../assets/images/swiftdine.jpg" alt="Logo" class="h-20 w-35" />
+    <img src="../../assets/images/swiftdine.jpg" alt="Logo" class="h-20 w-35" />
   </div>
 
   <!-- Center: Navigation -->

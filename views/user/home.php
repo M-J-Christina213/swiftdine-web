@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/components/header.php'; ?>
+<?php include __DIR__ . '../../components/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -6,20 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title> Swiftdine </title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Custom colors */
-    :root {
-      --orange: #FF7A00;
-      --gold: #FFD700;
-    }
-  </style>
 </head>
 <body class="bg-white text-black font-poppins">
 
   <!-- Section 1: Hero full width -->
 <section
   class="relative bg-cover bg-center text-white w-full p-10 md:p-20  overflow-hidden flex flex-col md:flex-row items-center gap-10"
-  style="background-image: url('../assets/images/buffet.jpg');"
+  style="background-image: url('../../assets/images/buffet.jpg');"
 >
   <!-- Overlay -->
   <div class="absolute inset-0 bg-black bg-opacity-60"></div>
@@ -74,19 +67,19 @@
 
   />
   <img
-    src="../assets/images/chef.jpg"
+    src="../../assets/images/chef.jpg"
     alt="Dish 2"
     class="w-full h-52 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
 
   />
   <img
-    src="../assets/images/chef.jpg"
+    src="../../assets/images/chef.jpg"
     alt="Dish 3"
     class="w-full h-52 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
 
   />
   <img
-    src="../assets/images/friends.jpg"
+    src="../../assets/images/friends.jpg"
     alt="Dish 4"
     class="w-full h-52 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
 />
@@ -95,28 +88,34 @@
   </div>
 </section>
 
-  <!-- Section 2: Special Offers -->
-  <section id="special-offers" class="bg-[var(--gold)] text-black py-14 px-6 text-center">
-    <h2 class="text-3xl font-extrabold mb-8">Special Offers</h2>
-    <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <article class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold mb-2">20% Off on Rice & Curry</h3>
-        <p>Enjoy traditional rice and curry meals at discounted prices across select restaurants.</p>
-      </article>
-      <article class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold mb-2">Free Delivery Over $30</h3>
-        <p>Get your food delivered free of charge when you order over $30 from participating outlets.</p>
-      </article>
-      <article class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold mb-2">Buy 1 Get 1 Free - Desserts</h3>
-        <p>Indulge in authentic Sri Lankan desserts with our special buy one get one free deal.</p>
-      </article>
-      <article class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold mb-2">Exclusive Weekend Deals</h3>
-        <p>Save more with our exclusive weekend offers on select meals and combos.</p>
-      </article>
-    </div>
-  </section>
+<!-- Section 2: Special Offers -->
+<section id="special-offers" class="bg-[var(--gold)] text-black py-14 px-6 text-center">
+  <h2 class="text-3xl font-extrabold mb-8">Special Offers</h2>
+  <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+
+    <?php
+    include __DIR__ . '../../config/db.php';
+
+    $stmt = $conn->prepare("SELECT description, discount, validity, image FROM deals ORDER BY created_at DESC LIMIT 3");
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()):
+      $imgPath = $row['image'] ? '../uploads/deals/' . $row['image'] : '../assets/images/offer-placeholder.jpg'; // fallback
+    ?>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer">
+        <img src="<?= htmlspecialchars($imgPath) ?>" alt="Special Offer" class="w-full h-48 object-cover">
+        <div class="p-5 text-left">
+          <h3 class="text-xl font-bold text-[var(--orange)] mb-2"><?= htmlspecialchars($row['description']) ?></h3>
+          <p class="text-gray-700 mb-2"><span class="font-semibold text-black"><?= htmlspecialchars($row['discount']) ?>% Off</span></p>
+          <p class="text-sm text-gray-600">Valid until <?= date("F j, Y", strtotime($row['validity'])) ?></p>
+        </div>
+      </div>
+    <?php endwhile; ?>
+
+  </div>
+</section>
+
 
   <!-- Section 3: Explore Sri Lanka Map & Locations -->
   <section id="explore" class="max-w-7xl mx-auto py-14 px-6">

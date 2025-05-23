@@ -24,11 +24,11 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
         <div class="bg-white p-6 rounded-lg shadow text-center border-t-4 border-orange-500">
           <h2 class="text-lg font-semibold text-gray-600">Monthly Income</h2>
-          <p class="text-3xl font-bold text-orange-600">$4,230</p>
+          <p class="text-3xl font-bold text-orange-600">Rs400,230</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow text-center border-t-4 border-orange-500">
           <h2 class="text-lg font-semibold text-gray-600">Monthly Expenses</h2>
-          <p class="text-3xl font-bold text-orange-600">$2,100</p>
+          <p class="text-3xl font-bold text-orange-600">Rs2,000,100</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow text-center border-t-4 border-orange-500">
           <h2 class="text-lg font-semibold text-gray-600">Dine-In Orders</h2>
