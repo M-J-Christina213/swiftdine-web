@@ -375,3 +375,5 @@ $menus = getMenuHighlights($conn);
 
 </body>
 </html>
+
+<?php include '../components/footer.php'; ?>
