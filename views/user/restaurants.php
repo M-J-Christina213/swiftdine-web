@@ -2,6 +2,8 @@
 include '../../config/db.php'; 
 
 $restaurants = getRestaurants($conn);
+$menus = getMenuHighlights($conn); 
+
 ?>
 
 <!DOCTYPE html>
@@ -121,6 +123,75 @@ $restaurants = getRestaurants($conn);
     <?php endforeach; ?>
   </div>
 </section>
+
+<!-- 3. Audience-Based menu Filters -->
+
+<section class="py-12 px-6 max-w-full mx-auto bg-orange-500  shadow-lg">
+  <h2 class="text-3xl font-extrabold mb-8 text-center text-white drop-shadow-md">
+     Menu Highlights
+  </h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <?php 
+        $menuCount = 0;
+        foreach ($menus as $menu): 
+        if ($menuCount >= 4) break;
+        $menuCount++;
+        ?>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+        <!-- Image -->
+        <img src="/assets/images/menus/<?= htmlspecialchars($menu['image']) ?>" alt="<?= htmlspecialchars($menu['name']) ?>" class="w-full h-48 object-cover">
+
+        <!-- Content -->
+        <div class="p-4">
+          <!-- Title + Price -->
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-lg font-semibold"><?= htmlspecialchars($menu['name']) ?></h3>
+            <span class="text-green-600 font-bold">LKR <?= number_format($menu['price'], 2) ?></span>
+          </div>
+
+          <!-- Description -->
+          <p class="text-gray-600 text-sm mb-3"><?= htmlspecialchars($menu['description']) ?></p>
+
+          <!-- Dietary Tags -->
+          <div class="flex flex-wrap gap-2 mb-4 text-sm">
+            <?php
+              
+              $tagsArray = array_map('trim', explode(',', $menu['tags']));
+                $tagsHtml = [];
+
+                foreach ($tagsArray as $tag) {
+                    switch (strtolower($tag)) {
+                        case 'vegetarian':
+                            $tagsHtml[] = '<span class="bg-green-100 text-green-800 px-2 py-1 rounded-full">🥦 Vegetarian</span>';
+                            break;
+                        case 'spicy':
+                            $tagsHtml[] = '<span class="bg-red-100 text-red-700 px-2 py-1 rounded-full">🌶️ Spicy</span>';
+                            break;
+                        case 'gluten-free':
+                            $tagsHtml[] = '<span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">🌾 Gluten-Free</span>';
+                            break;
+                        case 'gluten':
+                            $tagsHtml[] = '<span class="bg-gray-200 text-gray-700 px-2 py-1 rounded-full">🌾 Contains Gluten</span>';
+                            break;
+                    }
+                }
+
+                echo implode(' ', $tagsHtml);
+
+            ?>
+          </div>
+
+          <button class="w-full bg-black text-orange-500 font-semibold text-lg tracking-wide uppercase py-3 rounded-lg shadow-md hover:bg-gray-900 hover:shadow-lg transition duration-300">
+            Add to Order
+            </button>
+
+
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</section>
+
 
 </body>
 </html>
