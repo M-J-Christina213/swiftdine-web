@@ -1,6 +1,7 @@
 <?php
-// index.php
-session_start();
+include '../../config/db.php'; 
+
+$restaurants = getRestaurants($conn);
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +69,58 @@ session_start();
       </div>
     </div>
   </section>
+
+  <!-- 2. Restaurants Section -->
+   
+<section class="max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 py-16">
+  <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Where Would You Like to Eat?</h2>
+  <p class="text-gray-600 mb-8">Search, browse, or explore popular picks</p>
+
+  <!-- Search Bar -->
+  <div class="mb-8 max-w-lg mx-auto relative">
+    <input type="search" id="restaurantSearch" placeholder="Search by cuisine or location..." 
+      class="w-full border border-gray-300 rounded-full py-3 px-5 shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition" />
+    <!-- You can add JS autocomplete/suggestions later -->
+  </div>
+
+  <!-- Popular Categories Tabs -->
+  <div class="flex justify-center space-x-6 mb-12 text-gray-700 font-semibold">
+    <button class="category-tab px-4 py-2 rounded-full hover:bg-orange-100 focus:bg-orange-200 transition cursor-pointer" data-category="tourist">🌍 Tourist Favorites</button>
+    <button class="category-tab px-4 py-2 rounded-full hover:bg-orange-100 focus:bg-orange-200 transition cursor-pointer" data-category="srilankan">🇱🇰 Sri Lankan Gems</button>
+    <button class="category-tab px-4 py-2 rounded-full hover:bg-orange-100 focus:bg-orange-200 transition cursor-pointer" data-category="trending">🔥 Trending Now</button>
+  </div>
+
+  <!-- Restaurant Cards Grid -->
+  <div id="restaurantCards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <?php foreach ($restaurants as $res): ?>
+      <div class="bg-white rounded-lg shadow-md p-5 flex flex-col">
+
+     
+      
+        
+        <img src="<?= !empty($res['image']) ? htmlspecialchars($res['image']) : 'assets/images/restuarants/r1.jpg' ?>"
+          alt="<?= htmlspecialchars($res['name']) ?>" class="rounded-md mb-4 object-cover h-48 w-full" />
+
+
+        <h3 class="text-xl font-bold mb-1"><?= htmlspecialchars($res['name']) ?></h3>
+        <p class="text-sm text-gray-600 mb-1"><?= htmlspecialchars($res['location']) ?></p>
+        <p class="text-sm text-gray-600 mb-2 italic"><?= htmlspecialchars($res['cuisine']) ?></p>
+        <p class="mb-4 font-semibold text-orange-600">⭐ <?= number_format($res['rating'], 1) ?></p>
+
+        <div class="mt-auto flex space-x-3">
+          <a href="menu.php?restaurant_id=<?= $res['id'] ?>" 
+             class="flex-grow text-center bg-orange-500 hover:bg-orange-600 text-white rounded-full py-2 font-semibold transition">
+             View Menu
+          </a>
+          <a href="reserve.php?restaurant_id=<?= $res['id'] ?>" 
+             class="flex-grow text-center border border-orange-500 hover:bg-orange-500 hover:text-white rounded-full py-2 font-semibold transition">
+             Reserve Table
+          </a>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</section>
 
 </body>
 </html>

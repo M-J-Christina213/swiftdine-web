@@ -13,16 +13,17 @@ if ($conn->connect_error) {
 
   // Get all restaurants
 function getRestaurants($conn) {
-    $sql = "SELECT id, name, location, cuisine, rating FROM restaurants ORDER BY rating DESC";
+    $sql = "SELECT id, name, location, cuisine, rating, image FROM restaurants";
     $result = $conn->query($sql);
     $restaurants = [];
-    if ($result->num_rows > 0) {
+    if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $restaurants[] = $row;
         }
     }
     return $restaurants;
 }
+
 
 
 
