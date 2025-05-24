@@ -46,7 +46,7 @@ if ($result->num_rows === 1) {
 <!-- Back and Cancel Buttons -->
 <div class="flex justify-between items-center px-10 py-4">
     <!-- Back Arrow -->
-    <a href="javascript:history.back()" class="flex items-center text-gray-700 hover:text-black text-sm font-semibold">
+    <a href="home.php" class="flex items-center text-gray-700 hover:text-black text-sm font-semibold">
         <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
