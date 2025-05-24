@@ -39,20 +39,17 @@ while ($row = $result->fetch_assoc()) {
     </div>
 </div>
 
-<!-- Back and Cancel Buttons -->
+<!-- Navigation Buttons -->
 <div class="flex justify-between items-center px-10 py-4">
     <!-- Back Arrow -->
-    <a href="javascript:history.back()" class="flex items-center text-gray-700 hover:text-black text-sm font-semibold">
+    <a href="home.php" class="flex items-center text-gray-700 hover:text-black text-sm font-semibold">
         <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
         Back
     </a>
-
-    <!-- Cancel Button -->
-    <a href="home.php" class="text-sm text-gray-600 hover:text-red-600 font-semibold">
-        Cancel
-    </a>
+    
+    <a href="checkout.php" class="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-4 py-2 rounded transition">Proceed to Checkout →</a>
 </div>
 
 
