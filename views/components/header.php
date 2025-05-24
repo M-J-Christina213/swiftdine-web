@@ -6,7 +6,7 @@
 
   <!-- Center: Navigation -->
   <nav class="hidden md:flex space-x-6 text-sm font-medium">
-    <a href="index.php" class="hover:text-black">Home</a>
+    <a href="home.php" class="hover:text-black">Home</a>
     <a href="restaurants.php" class="hover:text-black">Restaurants</a>
     <a href="menu.php" class="hover:text-black">Browse Menu</a>
     <a href="food-guide.php" class="hover:text-black">Food Guide</a>
