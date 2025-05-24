@@ -1,3 +1,70 @@
+<?php
+// login.php
+session_start();
+require 'db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email    = trim($_POST['email']);
+    $password = $_POST['password'];
+
+    // Basic validation
+    if (empty($email) || empty($password)) {
+        $error = 'Please enter both email and password.';
+    } else {
+        // Retrieve user
+        $stmt = $conn->prepare('SELECT id, name, password, role FROM users WHERE email = ?');
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows === 1) {
+            $stmt->bind_result($id, $name, $hashed_password, $role);
+            $stmt->fetch();
+
+            if (password_verify($password, $hashed_password)) {
+                // Set session variables
+                $_SESSION['user_id'] = $id;
+                $_SESSION['user_name'] = $name;
+                $_SESSION['user_role'] = $role;
+
+                // Redirect based on role
+                switch ($role) {
+                    case 'admin':
+                        header('Location: adminDashboard.php');
+                        break;
+                    case 'restaurant':
+                        header('Location: ownerDashboard.php');
+                        break;
+                    case 'customer':
+                        header('Location: home.php');
+                        break;
+                    default:
+                        $error = 'Invalid user role.';
+                }
+                exit();
+            } else {
+                $error = 'Incorrect password.';
+            }
+        } else {
+            $error = 'Email not found.';
+        }
+        $stmt->close();
+    }
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,22 +115,6 @@
           Sign In
         </button>
 
-        <!-- Divider -->
-        <div class="flex items-center justify-center mb-4">
-          <span class="h-px bg-white w-1/4"></span>
-          <span class="px-2 text-sm">or continue with</span>
-          <span class="h-px bg-white w-1/4"></span>
-        </div>
-
-        <!-- Google & Facebook Buttons -->
-        <div class="flex gap-4 mb-6">
-          <button class="flex-1 bg-white text-black font-semibold py-2 rounded-full hover:bg-gray-100 transition">
-            Google
-          </button>
-          <button class="flex-1 bg-blue-600 text-white font-semibold py-2 rounded-full hover:bg-blue-700 transition">
-            Facebook
-          </button>
-        </div>
 
         <!-- Sign Up Prompt -->
         <p class="text-center text-sm">
