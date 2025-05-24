@@ -6,14 +6,7 @@ error_reporting(E_ALL);
 // Get restaurant by ID
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $sql = "SELECT * FROM restaurants WHERE id = $id";
-$result = $conn->query($sql);
 
-if ($result->num_rows === 1) {
-    $restaurant = $result->fetch_assoc();
-} else {
-    echo "Restaurant not found.";
-    exit;
-}
 ?>
 
 <!-- Tailwind CSS CDN -->
@@ -43,13 +36,19 @@ if ($result->num_rows === 1) {
     </div>
 </div>
 
-<!-- Back Button -->
-<div class="px-10 pt-4">
-    <a href="javascript:history.back()" class="text-gray-600 hover:text-black flex items-center text-sm font-semibold">
+<!-- Back and Cancel Buttons -->
+<div class="flex justify-between items-center px-10 py-4">
+    <!-- Back Arrow -->
+    <a href="javascript:history.back()" class="flex items-center text-gray-700 hover:text-black text-sm font-semibold">
         <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
         Back
+    </a>
+
+    <!-- Cancel Button -->
+    <a href="home.php" class="text-sm text-gray-600 hover:text-red-600 font-semibold">
+        Cancel
     </a>
 </div>
 
@@ -65,12 +64,12 @@ if ($result->num_rows === 1) {
             </div>
             <div class="w-16 h-1 bg-orange-500"></div>
             <div class="flex flex-col items-center">
-                <div class="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center font-bold">2</div>
-                <span class="text-sm mt-1 text-black">View Restaurant</span>
+                <div class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">✓</div>
+                <span class="text-sm mt-1 text-orange-500">View Restaurant</span>
             </div>
-            <div class="w-16 h-1 bg-black"></div>
+            <div class="w-16 h-1 bg-orange-500"></div>
             <div class="flex flex-col items-center">
-                <div class="w-10 h-10 bg-gray-300 text-gray-800 rounded-full flex items-center justify-center font-bold">3</div>
+                <div class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-bold">3</div>
                 <span class="text-sm mt-1 text-black">Menu</span>
             </div>
             <div class="h-1 w-14 bg-black"></div>
