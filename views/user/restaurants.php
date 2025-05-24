@@ -191,6 +191,95 @@ $menus = getMenuHighlights($conn);
     <?php endforeach; ?>
   </div>
 </section>
+<section class="bg-white text-black px-4 py-10 sm:px-8 md:px-16 lg:px-24">
+  <!-- Seating Preview -->
+  <h2 class="text-center text-3xl font-bold mb-2">Seating Preview</h2>
+  <p class="text-center text-gray-500 mb-8">Choose your preferred table and reserve in advance</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+    <!-- Layout Section -->
+    <div class="bg-gray-50 border rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold mb-4">Restaurant Layout</h3>
+      <div class="grid grid-cols-3 gap-4 justify-items-center text-sm font-medium">
+        <div class="bg-green-200 rounded p-4 w-16 h-16 flex items-center justify-center">T1</div>
+        <div class="bg-green-200 rounded p-4 w-16 h-16 flex items-center justify-center">T2</div>
+        <div class="bg-red-200 rounded p-4 w-16 h-16 flex items-center justify-center">T3</div>
+        <div class="bg-red-200 rounded p-4 w-16 h-16 flex items-center justify-center">T4</div>
+        <div class="bg-yellow-200 rounded p-4 w-16 h-16 flex items-center justify-center">T5</div>
+        <div class="bg-green-200 rounded p-4 w-16 h-16 flex items-center justify-center">T6</div>
+        <div class="bg-green-200 rounded p-4 w-16 h-16 flex items-center justify-center">T7</div>
+        <div class="bg-green-200 rounded p-4 w-16 h-16 flex items-center justify-center">T8</div>
+        <div class="bg-green-200 rounded p-4 w-16 h-16 flex items-center justify-center">T9</div>
+      </div>
+      <div class="mt-4 text-sm text-gray-600">🟩 Available | 🟥 Occupied | 🟨 Selected</div>
+    </div>
+
+    <!-- Reservation Form -->
+    <div class="bg-gray-50 border rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold mb-4">Reservation Details</h3>
+      <label class="block text-sm mb-1">Date</label>
+      <input type="date" class="w-full border rounded p-2 mb-4">
+
+      <label class="block text-sm mb-1">Time</label>
+      <div class="grid grid-cols-3 gap-2 mb-4">
+        <button class="bg-gray-100 hover:bg-orange-100 px-3 py-2 rounded">17:30</button>
+        <button class="bg-orange-500 text-white px-3 py-2 rounded">18:00</button>
+        <button class="bg-gray-100 hover:bg-orange-100 px-3 py-2 rounded">18:30</button>
+      </div>
+
+      <label class="block text-sm mb-1">Number of Guests</label>
+      <input type="number" value="4" class="w-full border rounded p-2 mb-4">
+
+      <label class="block text-sm mb-1">Selected Table</label>
+      <div class="text-sm text-orange-600 font-medium mb-4">Table 5 (Near Window, Seats 4)</div>
+
+      <label class="block text-sm mb-1">Special Requests</label>
+      <textarea class="w-full border rounded p-2 mb-4" placeholder="Any special requests or dietary requirements?"></textarea>
+
+      <button class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded font-semibold">
+        Confirm Reservation
+      </button>
+    </div>
+  </div>
+
+  <!-- Delivery & Takeaway -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Delivery -->
+    <div class="bg-gray-50 border rounded-xl p-6 shadow-sm">
+      <h3 class="text-lg font-bold mb-2">Delivery</h3>
+      <p class="text-sm text-gray-500 mb-4">Get your favorite Sri Lankan dishes delivered to your doorstep</p>
+      <input type="text" placeholder="Enter your delivery address" class="w-full border p-2 rounded mb-4">
+      <div class="flex items-center justify-between mb-2 text-sm">
+        <span>Estimated Delivery Time</span>
+        <span class="text-blue-600">25–35 mins</span>
+      </div>
+      <input type="text" placeholder="Any instructions for the delivery person?" class="w-full border p-2 rounded mb-4">
+      <button class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded font-semibold">
+        Proceed to Order
+      </button>
+    </div>
+
+    <!-- Takeaway -->
+    <div class="bg-gray-50 border rounded-xl p-6 shadow-sm">
+      <h3 class="text-lg font-bold mb-2">Takeaway</h3>
+      <p class="text-sm text-gray-500 mb-4">Skip the wait and pick up your order at your convenience</p>
+      <input type="text" placeholder="Search for a restaurant" class="w-full border p-2 rounded mb-4">
+      <div class="text-sm text-orange-600 mb-4 font-medium">Spice Garden (2.3km away)</div>
+      <div class="flex gap-2 mb-4">
+        <button class="px-4 py-2 border rounded hover:bg-orange-100">ASAP</button>
+        <button class="px-4 py-2 border bg-orange-500 text-white rounded">30 min</button>
+        <button class="px-4 py-2 border rounded hover:bg-orange-100">45 min</button>
+      </div>
+      <input type="text" placeholder="Any special instructions?" class="w-full border p-2 rounded mb-4">
+      <button class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded font-semibold">
+        Schedule Pickup
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
 
 
 </body>
