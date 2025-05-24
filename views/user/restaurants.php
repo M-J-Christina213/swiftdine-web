@@ -278,6 +278,97 @@ $menus = getMenuHighlights($conn);
   </div>
 </section>
 
+<section class="bg-white text-black px-4 py-14 sm:px-8 md:px-16 lg:px-24">
+  <h2 class="text-center text-3xl font-bold mb-2">Reviews & Ratings</h2>
+  <p class="text-center text-gray-500 mb-10">See what our customers are saying about their experiences</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    
+    <!-- Review Card 1 -->
+    <div class="bg-gray-50 border-2 border-orange-500 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+      <div class="flex items-center gap-4 mb-4">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="w-12 h-12 rounded-full object-cover">
+        <div>
+          <h3 class="font-semibold">Amanda Silva</h3>
+          <p class="text-sm text-gray-500">1 week ago</p>
+        </div>
+      </div>
+
+      <div class="flex items-center text-yellow-400 mb-2">
+        <span>★★★★★</span>
+      </div>
+
+      <div class="flex gap-2 mb-3 flex-wrap">
+        <span class="bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded">Verified Visit</span>
+        <span class="bg-blue-100 text-blue-700 text-xs font-medium px-2 py-1 rounded">Tourist Favorite</span>
+      </div>
+
+      <p class="text-sm text-gray-700 mb-4">
+        We were warmly welcomed and seated right by the window. The ambiance was lovely, and our dishes arrived quickly.
+        The seafood curry was rich and flavorful. Easily one of the best dining experiences I’ve had during my trip to Colombo.
+      </p>
+
+      <p class="text-xs text-gray-500 italic">Ordered from: <strong>Spice Garden</strong></p>
+    </div>
+
+    <!-- Review Card 2 -->
+    <div class="bg-gray-50 border-2 border-orange-500 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+      <div class="flex items-center gap-4 mb-4">
+        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Customer" class="w-12 h-12 rounded-full object-cover">
+        <div>
+          <h3 class="font-semibold">Nuwan Perera</h3>
+          <p class="text-sm text-gray-500">3 days ago</p>
+        </div>
+      </div>
+
+      <div class="flex items-center text-yellow-400 mb-2">
+        <span>★★★★☆</span>
+      </div>
+
+      <div class="flex gap-2 mb-3">
+        <span class="bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded">Verified Visit</span>
+      </div>
+
+      <p class="text-sm text-gray-700 mb-4">
+        The delivery was prompt, arriving even earlier than expected. Everything was neatly packed and still warm.
+        The chicken kottu was delicious, though the spice level was a bit higher than I prefer. Will definitely reorder!
+      </p>
+
+      <p class="text-xs text-gray-500 italic">Ordered from: <strong>Hopper House</strong></p>
+    </div>
+
+    <!-- Review Card 3 -->
+    <div class="bg-gray-50 border-2 border-orange-500 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+      <div class="flex items-center gap-4 mb-4">
+        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Customer" class="w-12 h-12 rounded-full object-cover">
+        <div>
+          <h3 class="font-semibold">Dilani Fernando</h3>
+          <p class="text-sm text-gray-500">5 days ago</p>
+        </div>
+      </div>
+
+      <div class="flex items-center text-yellow-400 mb-2">
+        <span>★★★★★</span>
+      </div>
+
+      <div class="flex gap-2 mb-3">
+        <span class="bg-blue-100 text-blue-700 text-xs font-medium px-2 py-1 rounded">Tourist Favorite</span>
+      </div>
+
+      <p class="text-sm text-gray-700 mb-4">
+        This place never disappoints! I picked up my lunch and it was ready on time, hot and fresh. The staff were polite,
+        and I loved the traditional flavors in their rice & curry combo. Highly recommended for locals and tourists alike.
+      </p>
+
+      <p class="text-xs text-gray-500 italic">Ordered from: <strong>Village Delight</strong></p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
 
 
 
