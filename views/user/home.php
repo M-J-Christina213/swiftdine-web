@@ -1,4 +1,4 @@
-<?php include __DIR__ . '../../components/header.php'; ?>
+<?php include __DIR__ . '/../components/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -15,7 +15,7 @@
   style="background-image: url('../../assets/images/buffet.jpg');"
 >
   <!-- Overlay -->
-  <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+  <div class="absolute inset-0 bg -black bg-opacity-60"></div>
 
   <!-- Content container to control max width inside full width section -->
   <div class="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto gap-10">
@@ -84,34 +84,6 @@
     class="w-full h-52 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
 />
 </div>
-
-  </div>
-</section>
-
-<!-- Section 2: Special Offers -->
-<section id="special-offers" class="bg-[var(--gold)] text-black py-14 px-6 text-center">
-  <h2 class="text-3xl font-extrabold mb-8">Special Offers</h2>
-  <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-
-    <?php
-    include __DIR__ . '../../config/db.php';
-
-    $stmt = $conn->prepare("SELECT description, discount, validity, image FROM deals ORDER BY created_at DESC LIMIT 3");
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    while ($row = $result->fetch_assoc()):
-      $imgPath = $row['image'] ? '../uploads/deals/' . $row['image'] : '../assets/images/offer-placeholder.jpg'; // fallback
-    ?>
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer">
-        <img src="<?= htmlspecialchars($imgPath) ?>" alt="Special Offer" class="w-full h-48 object-cover">
-        <div class="p-5 text-left">
-          <h3 class="text-xl font-bold text-[var(--orange)] mb-2"><?= htmlspecialchars($row['description']) ?></h3>
-          <p class="text-gray-700 mb-2"><span class="font-semibold text-black"><?= htmlspecialchars($row['discount']) ?>% Off</span></p>
-          <p class="text-sm text-gray-600">Valid until <?= date("F j, Y", strtotime($row['validity'])) ?></p>
-        </div>
-      </div>
-    <?php endwhile; ?>
 
   </div>
 </section>
