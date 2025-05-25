@@ -1,6 +1,6 @@
 <?php include __DIR__ . '/../components/header.php'; ?>
 <?php
-// Include the database connection (MySQLi)
+
 require_once '../../config/db.php';
 
 // Fetch menu items from the database using MySQLi
