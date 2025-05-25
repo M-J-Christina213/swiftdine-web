@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once '../../config/db.php';
 // Handle delete
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
@@ -49,7 +49,7 @@ function cancelEdit(id) {
 <body class="flex font-sans text-gray-900 min-h-screen">
 
   <!-- Sidebar Include -->
-  <?php include('../components/sidebar.php'); ?>
+  <?php include('../components/sidebarA.php'); ?>
 
   <!-- Main Content -->
   <main class="flex-1 bg-white p-10 overflow-auto">

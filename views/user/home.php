@@ -23,7 +23,7 @@ if (!isset($_SESSION['user_logged_in'])) {
   <!-- Section 1: Hero full width -->
 <section
   class="relative bg-cover bg-center text-white w-full p-10 md:p-20  overflow-hidden flex flex-col md:flex-row items-center gap-10"
-  style="background-image: url('../../assets/images/buffet.jpg');"
+  style="background-image: url('../../assets/images/home/buffet.jpg');"
 >
   <!-- Overlay -->
   <div class="absolute inset-0 bg -black bg-opacity-60"></div>
@@ -72,25 +72,25 @@ if (!isset($_SESSION['user_logged_in'])) {
   class="md:flex-1 grid grid-cols-2 gap-5 max-w-xl"
 >
   <img
-    src="../assets/images/friends.jpg"
-    alt="Dish 1"
+    src="../../assets/images/home/family.jfif"
+    alt="friends"
     class="w-full h-52 object-cover  shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
 
   />
   <img
-    src="../../assets/images/chef.jpg"
+    src="../../assets/images/home/friends.jpg"
     alt="Dish 2"
     class="w-full h-52 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
 
   />
   <img
-    src="../../assets/images/chef.jpg"
+    src="../../assets/images/home/chef.jpg"
     alt="Dish 3"
     class="w-full h-52 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
 
   />
   <img
-    src="../../assets/images/friends.jpg"
+    src="../../assets/images/home/couple.jpg"
     alt="Dish 4"
     class="w-full h-52 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
 />
