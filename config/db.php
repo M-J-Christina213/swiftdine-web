@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 
   // Get all restaurants
 function getRestaurants($conn) {
-    $sql = "SELECT id, name, location, cuisine, rating, image FROM restaurants";
+    $sql = "SELECT id, name, location, cuisine, rating, image_url FROM restaurants";
     $result = $conn->query($sql);
     $restaurants = [];
     if ($result && $result->num_rows > 0) {

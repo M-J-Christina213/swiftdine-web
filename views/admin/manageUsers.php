@@ -1,4 +1,4 @@
-<?php include '../components/sidebarA.php'; ?>
+<?php include '../components/sidebarAdmin.php'; ?>
 
 <?php
 error_reporting(E_ALL);
@@ -76,9 +76,9 @@ $result = $conn->query("SELECT * FROM users ORDER BY id ASC");
   </style>
 </head>
 <body class="flex bg-gray-50 min-h-screen font-sans">
-  <?php include('../components/sidebar.php'); ?>
 
-  <main class="flex-1 p-10 bg-white shadow-lg rounded-lg mx-6 my-6">
+
+  <main class="flex-1 p-10 ml-64 bg-white shadow-lg rounded-lg mx-6 my-6">
     <h1 class="text-3xl font-bold text-orange-600 mb-6">Manage Users</h1>
 
     <button id="add_user_btn" onclick="showAddForm()" class="mb-4 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
@@ -142,7 +142,7 @@ $result = $conn->query("SELECT * FROM users ORDER BY id ASC");
               <td class="p-2">
                 <select name="role" class="border rounded px-2 py-1 w-full" required>
                   <option value="customer" <?= $row['role'] === 'customer' ? 'selected' : '' ?>>Customer</option>
-                  <option value="restaurant owner" <?= $row['role'] === 'restaurant owner' ? 'selected' : '' ?>>Restaurant Owner</option>
+                  <option value="restaurant owner" <?= $row['role'] === 'restaurant owner' ? 'selected' : '' ?>>Restaurant</option>
                   <option value="admin" <?= $row['role'] === 'admin' ? 'selected' : '' ?>>Admin</option>
                 </select>
               </td>

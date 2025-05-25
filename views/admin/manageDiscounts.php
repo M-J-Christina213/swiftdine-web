@@ -1,4 +1,4 @@
-<?php include '../components/sidebarA.php'; ?>
+<?php include '../components/sidebarAdmin.php'; ?>
 
 <?php
 ini_set('display_errors', 1);
@@ -48,9 +48,9 @@ $result = $conn->query("SELECT * FROM deals");
   </script>
 </head>
 <body class="flex">
-  <?php include('../components/sidebar.php'); ?>
+  <?php include('../components/sidebarAdmin.php'); ?>
 
-  <main class="flex-1 p-10 bg-white overflow-x-auto">
+  <main class="flex-1 p-10 ml-64  bg-white overflow-x-auto">
     <h1 class="text-3xl font-bold mb-6 text-orange-600">🏷️ Manage Discounts</h1>
 
     <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow">

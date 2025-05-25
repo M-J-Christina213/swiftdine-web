@@ -1,4 +1,4 @@
-<?php include '../components/sidebarA.php'; ?>
+<?php include '../components/sidebarAdmin.php'; ?>
 <?php
 require_once '../../config/db.php';
 // Handle delete
@@ -50,10 +50,10 @@ function cancelEdit(id) {
 <body class="flex font-sans text-gray-900 min-h-screen">
 
   <!-- Sidebar Include -->
-  <?php include('../components/sidebarA.php'); ?>
+  <?php include('../components/sidebarAdmin.php'); ?>
 
   <!-- Main Content -->
-  <main class="flex-1 bg-white p-10 overflow-auto">
+  <main class="flex-1 bg-white p-10 ml-64 overflow-auto">
     <div class="flex justify-between items-center mb-10">
       <h1 class="text-3xl font-bold">Manage Orders</h1>
       <a href="logout.php" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">

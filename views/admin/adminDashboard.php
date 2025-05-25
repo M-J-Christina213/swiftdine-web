@@ -1,4 +1,4 @@
-<?php include '../components/sidebarA.php'; ?>
+<?php include '../components/sidebarAdmin.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +12,11 @@
 
 
   <!-- Main Content -->
-  <main class="flex-1 bg-white p-10 overflow-auto">
+  <main class="flex-1 bg-white p-10 ml-64 overflow-auto">
     <!-- Header -->
     <div class="flex justify-between items-center mb-10">
       <h1 class="text-3xl font-bold">Welcome, Admin</h1>
-      <a href="logout.php" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
-        Logout
-      </a>
+      
     </div>
 
     <!-- Summary Cards -->

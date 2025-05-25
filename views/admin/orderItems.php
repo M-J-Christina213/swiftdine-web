@@ -1,4 +1,4 @@
-<?php include '../components/sidebarA.php'; ?>
+<?php include '../components/sidebarAdmin.php'; ?>
 <?php
 
 require_once '../../config/db.php';

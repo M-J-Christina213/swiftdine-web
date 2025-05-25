@@ -1,4 +1,4 @@
-<?php include '../components/sidebarA.php'; ?>
+<?php include '../components/sidebarAdmin.php'; ?>
 
 <?php
 session_start();
@@ -20,11 +20,10 @@ $result = $conn->query("SELECT * FROM restaurants");
 </head>
 <body class="flex">
 
-  <?php include('../components/sidebar.php'); ?>
 
-  <main class="flex-1 p-10 bg-white overflow-x-auto">
+  <main class="flex-1 p-10 ml-64 bg-white overflow-x-auto">
     <div class="flex justify-between items-center mb-6">
-      <h1 class="text-3xl font-bold text-orange-600">🍽 Manage Restaurants</h1>
+      <h1 class="text-3xl font-bold text-orange-600"> Manage Restaurants</h1>
       <a href="addRestaurant.php" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">➕ Add Restaurant</a>
     </div>
 
@@ -47,8 +46,8 @@ $result = $conn->query("SELECT * FROM restaurants");
           <tr class="border-b hover:bg-gray-50">
             <td class="px-4 py-3"><?php echo $row['id']; ?></td>
             <td class="px-4 py-3">
-              <?php if ($row['image_path']): ?>
-                <img src="../uploads/<?php echo $row['image_path']; ?>" class="w-16 h-16 rounded object-cover">
+              <?php if (!empty($row['image_url'])): ?>
+                <img src="<?php echo htmlspecialchars($row['image_url']); ?>" class="w-16 h-16 rounded object-cover">
               <?php else: ?>
                 <span class="text-gray-400 italic">No image</span>
               <?php endif; ?>
