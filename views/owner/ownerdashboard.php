@@ -13,7 +13,7 @@
 <div class="flex min-h-screen">
 
   <!-- Main Content -->
-  <main class="flex-1 p-8 pl-64">
+  <main class="flex-1 p-8 ml-64">
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-3xl font-bold text-orange-600">Welcome, Restaurant Owner!</h1>
     </div>

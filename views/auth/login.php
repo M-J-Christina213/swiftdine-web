@@ -43,9 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                           header('Location: ../owner/ownerDashboard.php');
                           exit;
 
-                      case 'user':
+                      case 'customer':
                           $_SESSION['user_logged_in'] = true;
-                          header('Location: ../users/userDashboard.php');
+                          header('Location: ../user/home.php');
                           exit;
 
                       default:

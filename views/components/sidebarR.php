@@ -13,10 +13,10 @@ if (!isset($_SESSION['owner_logged_in'])) {
       <a href="ownerDashboard.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Dashboard</a>
       <a href="manageRestaurant.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Manage Restaurant</a>
       <a href="manageMenus.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Manage Menus</a>
-      <a href="manage_orders.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Manage Orders</a>
-      <a href="manage_staff.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Manage Staff</a>
-      <a href="manage_supplier.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Manage Supplier</a>
-      <a href="logout.php" class="block px-4 py-2 rounded hover:bg-orange-700 bg-orange-600 mt-10 transition-all duration-200"> Logout</a>
+      <a href="manageOrders.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Manage Orders</a>
+      <a href="manageStaff.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Manage Staff</a>
+      <a href="manageSupplier.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Manage Suppliers</a>
+      <a href="auth/logout.php" class="block px-4 py-2 rounded hover:bg-orange-700 bg-orange-600 mt-10 transition-all duration-200"> Logout</a>
     </nav>
   </div>
 </aside>

@@ -16,7 +16,7 @@ if ($result->num_rows === 1) {
 }
 ?>
 
-<!-- Tailwind CSS CDN -->
+<!-- TaAilwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 
 <!-- Banner Section -->
