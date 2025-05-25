@@ -8,10 +8,10 @@
   <nav class="hidden md:flex space-x-6 text-sm font-medium">
     <a href="home.php" class="hover:text-black">Home</a>
     <a href="restaurants.php" class="hover:text-black">Restaurants</a>
-    <a href="menu.php" class="hover:text-black">Browse Menu</a>
-    <a href="food-guide.php" class="hover:text-black">Food Guide</a>
-    <a href="special-offers.php" class="hover:text-black">Special Offers</a>
-    <a href="track-order.php" class="hover:text-black">Track Order</a>
+    <a href="browseMenus.php" class="hover:text-black">Browse Menu</a>
+    <a href="foodGuide.php" class="hover:text-black">Food Guide</a>
+    <a href="specialOffers.php" class="hover:text-black">Special Offers</a>
+    <a href="trackOrder.php" class="hover:text-black">Track Order</a>
   </nav>
 
   <!-- Right: Buttons -->
