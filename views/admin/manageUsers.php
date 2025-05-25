@@ -1,3 +1,5 @@
+<?php include '../components/sidebarA.php'; ?>
+
 <?php
 error_reporting(E_ALL);
 $conn = new mysqli("localhost", "root", "", "swiftdine", 3307);

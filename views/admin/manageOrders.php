@@ -1,3 +1,4 @@
+<?php include '../components/sidebarA.php'; ?>
 <?php
 require_once '../../config/db.php';
 // Handle delete

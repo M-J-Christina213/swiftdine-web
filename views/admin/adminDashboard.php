@@ -1,15 +1,4 @@
-session_start();
-if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'restaurant') {
-    header("Location: ../auth/login.php");
-    exit;
-}
-
-
-
-
-
-
-
+<?php include '../components/sidebarA.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,18 +10,6 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'restaurant') {
 </head>
 <body class="flex font-sans text-gray-900 min-h-screen">
 
-  <!-- Sidebar -->
-  <aside class="w-64 h-screen bg-black text-white flex flex-col">
-    <div class="p-6 text-2xl font-bold text-orange-500">SwiftDine Admin</div>
-    <nav class="flex flex-col gap-4 p-6 text-lg">
-      <a href="adminDashboard.php" class="hover:text-orange-400">🏠 Dashboard</a>
-      <a href="manageUsers.php" class="hover:text-orange-400">🧑 Manage Users</a>
-      <a href="manageRestaurants.php" class="hover:text-orange-400">🍽 Manage Restaurants</a>
-      <a href="manageOrders.php" class="hover:text-orange-400">📦 Manage Orders</a>
-      <a href="manageDiscounts.php" class="hover:text-orange-400">🏷️ Manage Discounts</a>
-      <a href="manageReviews.php" class="hover:text-orange-400">📰 Manage Reviews</a>
-    </nav>
-  </aside>
 
   <!-- Main Content -->
   <main class="flex-1 bg-white p-10 overflow-auto">
