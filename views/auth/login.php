@@ -29,20 +29,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_name'] = $name;
                 $_SESSION['user_role'] = $role;
 
+                
                 // Redirect based on role
-                switch ($role) {
-                    case 'admin':
-                        header('Location: ../admin/adminDashboard.php');
-                        break;
-                    case 'restaurant':
-                        header('Location: ../owner/ownerDashboard.php');
-                        break;
-                    case 'customer':
-                        header('Location: ../user/home.php');
-                        break;
-                    default:
-                        $error = 'Invalid user role.';
-                }
+                
+                  switch ($role) {
+                      case 'admin':
+                          $_SESSION['admin_logged_in'] = true;
+                          header('Location: ../admin/adminDashboard.php');
+                          exit;
+
+                      case 'restaurant':
+                          $_SESSION['owner_logged_in'] = true;  
+                          header('Location: ../owner/ownerDashboard.php');
+                          exit;
+
+                      case 'user':
+                          $_SESSION['user_logged_in'] = true;
+                          header('Location: ../users/userDashboard.php');
+                          exit;
+
+                      default:
+                          $message = 'Unknown role!';
+                          break;
+                  }
                 exit();
             } else {
                 $error = 'Incorrect password.';

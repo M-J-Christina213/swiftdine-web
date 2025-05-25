@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['admin_logged_in'])) {
+    header("Location: ../auth/login.php");
+    exit;
+}
+?>
+
+
 <!-- sidebar.php -->
 <aside class="w-64 h-screen bg-black text-white flex flex-col">
   <div class="p-6 text-2xl font-bold text-orange-500">SwiftDine Admin</div>
