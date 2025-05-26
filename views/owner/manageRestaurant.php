@@ -2,7 +2,6 @@
 
 <?php
 include("../../config/db.php");
-
 session_start();
 
 if (!isset($_SESSION['owner_id'])) {
@@ -12,8 +11,19 @@ if (!isset($_SESSION['owner_id'])) {
 
 $owner_id = $_SESSION['owner_id'];
 
+// Handle delete action inline
+if (isset($_GET['delete_id'])) {
+    $delete_id = (int)$_GET['delete_id'];
+    $stmt = $conn->prepare("DELETE FROM restaurants WHERE id = ? AND owner_id = ?");
+    $stmt->bind_param("ii", $delete_id, $owner_id);
+    $stmt->execute();
+    header("Location: view_restaurants.php"); // Refresh page after deletion
+    exit();
+}
+
 $result = $conn->query("SELECT * FROM restaurants WHERE owner_id = $owner_id");
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +36,7 @@ $result = $conn->query("SELECT * FROM restaurants WHERE owner_id = $owner_id");
     <div class="max-w-6xl mx-auto p-6 ml-64">
         <h2 class="text-3xl font-bold text-orange-600 mb-6">My Restaurants</h2>
 
-        <a href="add_restaurant.php" class="mb-4 inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded">
+        <a href="addRestaurant.php" class="mb-4 inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded">
             + Add New Restaurant
         </a>
 
@@ -61,8 +71,8 @@ $result = $conn->query("SELECT * FROM restaurants WHERE owner_id = $owner_id");
                             <td class="py-3 px-4"><?= htmlspecialchars($row['cuisine']) ?></td>
                             <td class="py-3 px-4"><?= htmlspecialchars($row['rating']) ?></td>
                             <td class="py-3 px-4 space-x-2">
-                                <a href="edit_restaurant.php?id=<?= $row['id'] ?>" class="text-blue-500 hover:underline">Edit</a>
-                                <a href="delete_restaurant.php?id=<?= $row['id'] ?>" class="text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this restaurant?')">Delete</a>
+                                <a href="editRestaurant.php?id=<?= $row['id'] ?>" class="text-blue-500 hover:underline">Edit</a>
+                                <a href="?delete_id=<?= $row['id'] ?>" class="text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this restaurant?')">Delete</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>

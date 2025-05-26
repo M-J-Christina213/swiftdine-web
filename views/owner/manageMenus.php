@@ -5,6 +5,40 @@ include '../components/sidebarOwner.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+if (isset($_POST['add'])) {
+    $restaurant_id = $_POST['restaurant_id'];
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+
+    // Handle image: prioritize upload over URL
+    $image = '';
+    if (!empty($_FILES['image']['name'])) {
+        $uploadDir = '../../assets/images/menus/';
+        $fileName = basename($_FILES['image']['name']);
+        $targetPath = $uploadDir . $fileName;
+        $relativePath = 'assets/images/menus/' . $fileName;
+
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
+            $image = $relativePath;
+        }
+    } elseif (!empty($_POST['image_url'])) {
+        $image = trim($_POST['image_url']);
+    }
+
+    // Insert into database
+    $stmt = $conn->prepare("INSERT INTO menus (restaurant_id, name, description, price, image) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("issds", $restaurant_id, $name, $description, $price, $image);
+
+    if ($stmt->execute()) {
+        header("Location: manageMenus.php");
+        exit();
+    } else {
+        echo "Error adding menu item: " . $stmt->error;
+    }
+}
+
+
 if (isset($_POST['update'])) {
     echo "Update triggered for ID: " . $_POST['id'];
     // you can add exit here to check
@@ -50,6 +84,10 @@ $uploadDir = '/assets/images/menus/';
             
             <label class="block text-orange-600 font-medium">Upload Image</label>
             <input type="file" name="image" accept="image/*" class="w-full border border-gray-300 p-2 rounded cursor-pointer" />
+
+            <label class="block text-orange-600 font-medium">Or Enter Image URL</label>
+            <input type="text" name="image_url" placeholder="https://example.com/image.jpg" class="w-full border border-gray-300 p-2 rounded" />
+
 
             <button type="submit" name="add" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded transition duration-300 ease-in-out transform hover:scale-105">Add Menu Item</button>
         </form>

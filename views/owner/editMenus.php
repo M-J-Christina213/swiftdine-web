@@ -1,82 +1,111 @@
 <?php
-// edit_menu.php
-
 include '../../config/db.php';
 include '../components/sidebarOwner.php';
 
-// Get menu id from GET parameter
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Fetch the menu item by ID
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    die("Menu ID is required.");
+    echo "Invalid menu ID.";
+    exit();
 }
 
-$id = intval($_GET['id']);
+$menu_id = $_GET['id'];
 
-// Initialize variables for form fields
-$menu_name = '';
-$menu_price = '';
-$menu_status = 'available';
+// Fetch existing data
+$stmt = $conn->prepare("SELECT * FROM menus WHERE id = ?");
+$stmt->bind_param("i", $menu_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$menu = $result->fetch_assoc();
 
-// If form is submitted, process update
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $menu_name = $_POST['menu_name'] ?? '';
-    $menu_price = $_POST['menu_price'] ?? '';
-    $menu_status = $_POST['menu_status'] ?? 'available';
+if (!$menu) {
+    echo "Menu item not found.";
+    exit();
+}
 
-    // Basic validation (add your own as needed)
-    if ($menu_name && is_numeric($menu_price)) {
-        // Prepare and execute update statement
-        $stmt = $conn->prepare("UPDATE menu SET menu_name = ?, menu_price = ?, menu_status = ? WHERE id = ?");
-        $stmt->bind_param("sdsi", $menu_name, $menu_price, $menu_status, $id);
-        $stmt->execute();
+// Handle update form submission
+if (isset($_POST['update'])) {
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+    $restaurant_id = $_POST['restaurant_id'];
+    $image = $menu['image']; // default: keep old image
 
-        if ($stmt->affected_rows > 0) {
-            // Redirect back to menu list or show success message
-            header("Location: menus.php?update=success");
-            exit;
-        } else {
-            echo "<p>No changes made or update failed.</p>";
+    // Handle image update (if provided)
+    if (!empty($_FILES['image']['name'])) {
+        $uploadDir = '../../assets/images/menus/';
+        $fileName = basename($_FILES['image']['name']);
+        $targetPath = $uploadDir . $fileName;
+        $relativePath = 'assets/images/menus/' . $fileName;
+
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
+            $image = $relativePath;
         }
-        $stmt->close();
+    } elseif (!empty($_POST['image_url'])) {
+        $image = trim($_POST['image_url']);
+    }
+
+    // Update DB
+    $update = $conn->prepare("UPDATE menus SET name = ?, description = ?, price = ?, image = ?, restaurant_id = ? WHERE id = ?");
+    $update->bind_param("ssdssi", $name, $description, $price, $image, $restaurant_id, $menu_id);
+
+    if ($update->execute()) {
+        header("Location: manageMenus.php");
+        exit();
     } else {
-        echo "<p>Please provide valid menu name and price.</p>";
+        echo "Error updating menu: " . $update->error;
     }
 }
-
-// On first load or if POST fails, fetch current menu info
-$stmt = $conn->prepare("SELECT menu_name, menu_price, menu_status FROM menu WHERE id = ?");
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$stmt->bind_result($menu_name, $menu_price, $menu_status);
-if (!$stmt->fetch()) {
-    die("Menu item not found.");
-}
-$stmt->close();
-$conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Edit Menu Item</title>
+    <title>Edit Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h2>Edit Menu Item #<?= htmlspecialchars($id) ?></h2>
-    <form method="post">
-        <label for="menu_name">Menu Name:</label><br />
-        <input type="text" id="menu_name" name="menu_name" value="<?= htmlspecialchars($menu_name) ?>" required><br /><br />
+<body class="bg-orange-50 text-gray-800">
+    <div class="max-w-2xl mx-auto p-6 ml-64">
+        <h1 class="text-3xl font-bold text-orange-600 mb-6">Edit Menu Item</h1>
 
-        <label for="menu_price">Price:</label><br />
-        <input type="number" id="menu_price" name="menu_price" value="<?= htmlspecialchars($menu_price) ?>" step="0.01" required><br /><br />
+        <form method="POST" enctype="multipart/form-data" class="bg-white shadow rounded p-6 space-y-4">
+            <select name="restaurant_id" required class="w-full border border-gray-300 p-2 rounded">
+                <option value="" disabled>Select Restaurant</option>
+                <?php
+                $restaurants = $conn->query("SELECT id, name FROM restaurants");
+                while ($rest = $restaurants->fetch_assoc()):
+                ?>
+                <option value="<?= $rest['id'] ?>" <?= $rest['id'] == $menu['restaurant_id'] ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($rest['name']) ?>
+                </option>
+                <?php endwhile; ?>
+            </select>
 
-        <label for="menu_status">Status:</label><br />
-        <select id="menu_status" name="menu_status" required>
-            <option value="available" <?= $menu_status === 'available' ? 'selected' : '' ?>>Available</option>
-            <option value="not available" <?= $menu_status === 'not available' ? 'selected' : '' ?>>Not Available</option>
-        </select><br /><br />
+            <input type="text" name="name" value="<?= htmlspecialchars($menu['name']) ?>" required class="w-full border border-gray-300 p-2 rounded" />
+            <textarea name="description" required class="w-full border border-gray-300 p-2 rounded" rows="3"><?= htmlspecialchars($menu['description']) ?></textarea>
+            <input type="number" step="0.01" min="0" name="price" value="<?= htmlspecialchars($menu['price']) ?>" required class="w-full border border-gray-300 p-2 rounded" />
 
-        <button type="submit">Update</button>
-    </form>
-    <p><a href="menus.php">Back to Menu List</a></p>
+            <label class="block text-orange-600 font-medium">Upload New Image (optional)</label>
+            <input type="file" name="image" accept="image/*" class="w-full border border-gray-300 p-2 rounded" />
+
+            <label class="block text-orange-600 font-medium">Or Enter Image URL</label>
+            <input type="text" name="image_url" placeholder="https://example.com/image.jpg" class="w-full border border-gray-300 p-2 rounded" />
+
+            <div class="flex items-center space-x-4 mt-4">
+                <?php if (!empty($menu['image'])): ?>
+                    <img src="<?= htmlspecialchars($menu['image']) ?>" alt="Current Image" class="w-20 h-20 object-cover border rounded" />
+                <?php else: ?>
+                    <span>No image available</span>
+                <?php endif; ?>
+            </div>
+
+            <button type="submit" name="update" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded transition transform hover:scale-105">
+                Update Menu
+            </button>
+        </form>
+    </div>
 </body>
 </html>
