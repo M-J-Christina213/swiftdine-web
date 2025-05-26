@@ -1,18 +1,89 @@
 <?php
+session_start();
 include '../../config/db.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$result = $conn->query("SELECT * FROM menus"); 
+//  session ID to track user's cart
+$session_id = session_id();
 
+
+// Handle AJAX requests for cart operations
+if (isset($_POST['action'])) {
+    $action = $_POST['action'];
+    $menu_id = intval($_POST['menu_id'] ?? 0);
+    $quantity = intval($_POST['quantity'] ?? 1);
+
+    if ($action === 'add') {
+        // Check if item already in cart
+        $stmt = $conn->prepare("SELECT id, quantity FROM cart WHERE session_id = ? AND menu_id = ?");
+        $stmt->bind_param("si", $session_id, $menu_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            // Update quantity
+            $new_quantity = $row['quantity'] + $quantity;
+            $update = $conn->prepare("UPDATE cart SET quantity = ? WHERE id = ?");
+            $update->bind_param("ii", $new_quantity, $row['id']);
+            $update->execute();
+        } else {
+            // Insert new
+            $insert = $conn->prepare("INSERT INTO cart (session_id, menu_id, quantity) VALUES (?, ?, ?)");
+            $insert->bind_param("sii", $session_id, $menu_id, $quantity);
+            $insert->execute();
+        }
+        echo json_encode(['status' => 'success', 'message' => 'Added to cart']);
+        exit;
+    }
+
+    if ($action === 'remove') {
+        $delete = $conn->prepare("DELETE FROM cart WHERE session_id = ? AND menu_id = ?");
+        $delete->bind_param("si", $session_id, $menu_id);
+        $delete->execute();
+        echo json_encode(['status' => 'success', 'message' => 'Removed from cart']);
+        exit;
+    }
+
+    if ($action === 'update') {
+        if ($quantity <= 0) {
+            // Remove if quantity zero or less
+            $delete = $conn->prepare("DELETE FROM cart WHERE session_id = ? AND menu_id = ?");
+            $delete->bind_param("si", $session_id, $menu_id);
+            $delete->execute();
+        } else {
+            $update = $conn->prepare("UPDATE cart SET quantity = ? WHERE session_id = ? AND menu_id = ?");
+            $update->bind_param("isi", $quantity, $session_id, $menu_id);
+            $update->execute();
+        }
+        echo json_encode(['status' => 'success', 'message' => 'Cart updated']);
+        exit;
+    }
+}
+
+
+// Fetch all menu items
+$result = $conn->query("SELECT * FROM menus"); 
 if (!$result) {
     die("Query failed: " . $conn->error);
 }
-
-// Fetch all menu rows into $menus array
 $menus = [];
 while ($row = $result->fetch_assoc()) {
     $menus[] = $row;
+}
+
+// Fetch cart items for current session
+$stmt = $conn->prepare("
+    SELECT c.menu_id, c.quantity, m.name, m.price 
+    FROM cart c 
+    JOIN menus m ON c.menu_id = m.id 
+    WHERE c.session_id = ?
+");
+$stmt->bind_param("s", $session_id);
+$stmt->execute();
+$cart_result = $stmt->get_result();
+$orderItems = [];
+while ($row = $cart_result->fetch_assoc()) {
+    $orderItems[] = $row;
 }
 ?>
 
@@ -22,6 +93,70 @@ while ($row = $result->fetch_assoc()) {
     <meta charset="UTF-8">
     <title>Full Menu</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    // AJAX helper
+    async function ajaxCart(action, menu_id, quantity=1) {
+        const formData = new FormData();
+        formData.append('action', action);
+        formData.append('menu_id', menu_id);
+        formData.append('quantity', quantity);
+
+        const response = await fetch('menu.php', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await response.json();
+        if(data.status === 'success') {
+            // Refresh cart display
+            loadCart();
+        } else {
+            alert('Something went wrong.');
+        }
+    }
+
+    // Load cart summary via AJAX (simple approach)
+    async function loadCart() {
+        const response = await fetch('cart_summary.php'); // We'll create this endpoint below
+        const html = await response.text();
+        document.getElementById('cart-summary').innerHTML = html;
+    }
+
+    // On page load, load cart
+    document.addEventListener('DOMContentLoaded', () => {
+        loadCart();
+
+        // Attach add to cart handlers
+        document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const menuId = e.target.dataset.menuId;
+                const qtyElem = document.querySelector(`#qty-${menuId}`);
+                const quantity = parseInt(qtyElem.value) || 1;
+                ajaxCart('add', menuId, quantity);
+            });
+        });
+
+        // Attach quantity increment/decrement
+        document.querySelectorAll('.qty-decrease').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const menuId = e.target.dataset.menuId;
+                const qtyElem = document.querySelector(`#qty-${menuId}`);
+                let val = parseInt(qtyElem.value) || 1;
+                if(val > 1) val--;
+                qtyElem.value = val;
+            });
+        });
+
+        document.querySelectorAll('.qty-increase').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const menuId = e.target.dataset.menuId;
+                const qtyElem = document.querySelector(`#qty-${menuId}`);
+                let val = parseInt(qtyElem.value) || 1;
+                val++;
+                qtyElem.value = val;
+            });
+        });
+    });
+    </script>
 </head>
 
 
@@ -109,7 +244,7 @@ while ($row = $result->fetch_assoc()) {
             <?php foreach ($menus as $menu): ?>
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
                     <!-- Image -->
-                    <img src="/assets/images/menus/<?= htmlspecialchars($menu['image']) ?>" alt="<?= htmlspecialchars($menu['name']) ?>" class="w-full h-48 object-cover">
+                    <img src="<?= (filter_var($menu['image'], FILTER_VALIDATE_URL) ? $menu['image'] : 'images/' . htmlspecialchars($menu['image'])) ?>" alt="<?= htmlspecialchars($menu['name']) ?>" class="w-full h-48 object-cover">
 
                     <!-- Content -->
                     <div class="p-4">
@@ -125,7 +260,7 @@ while ($row = $result->fetch_assoc()) {
                         <!-- Dietary Tags -->
                         <div class="flex flex-wrap gap-2 mb-4 text-sm">
                             <?php
-                            $tagsArray = array_map('trim', explode(',', $menu['tags']));
+                            $tagsArray = array_map('trim', explode(',', $menu['tags'] ?? ''));
                             foreach ($tagsArray as $tag) {
                                 switch (strtolower($tag)) {
                                     case 'vegetarian':
@@ -145,20 +280,14 @@ while ($row = $result->fetch_assoc()) {
                             ?>
                         </div>
 
-                        <!-- Quantity Selector -->
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex items-center space-x-2">
-                                <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded">-</button>
-                                <span class="text-gray-700">1</span>
-                                <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded">+</button>
-                            </div>
-                            <button class="text-gray-500 hover:text-red-500">
-                                ❤️
-                            </button>
+                        <!-- Quantity controls -->
+                        <div class="flex items-center mb-3 gap-2">
+                            <button data-menu-id="<?= $menu['id'] ?>" class="qty-decrease bg-gray-200 rounded px-3 py-1 hover:bg-gray-300">-</button>
+                            <input id="qty-<?= $menu['id'] ?>" type="number" min="1" value="1" class="w-12 text-center rounded border border-gray-300">
+                            <button data-menu-id="<?= $menu['id'] ?>" class="qty-increase bg-gray-200 rounded px-3 py-1 hover:bg-gray-300">+</button>
                         </div>
 
-                        <!-- Add to Cart Button -->
-                        <button class="w-full bg-black text-orange-500 font-semibold text-lg tracking-wide uppercase py-3 rounded-lg shadow-md hover:bg-gray-900 hover:shadow-lg transition duration-300">
+                        <button data-menu-id="<?= $menu['id'] ?>" class="add-to-cart-btn w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700 transition">
                             Add to Cart
                         </button>
                     </div>
@@ -168,38 +297,10 @@ while ($row = $result->fetch_assoc()) {
     </div>
 
     <!-- Order Summary Sidebar -->
-    <div class="w-full lg:w-1/3 bg-white rounded-lg shadow-md p-6">
-        <h2 class="text-2xl font-bold mb-4">Your Order</h2>
-        <?php if (!empty($orderItems)): ?>
-            <ul class="divide-y divide-gray-200 mb-4">
-                <?php
-                $subtotal = 0;
-                foreach ($orderItems as $item):
-                    $itemTotal = $item['price'] * $item['quantity'];
-                    $subtotal += $itemTotal;
-                    ?>
-                    <li class="py-2 flex justify-between">
-                        <span><?= htmlspecialchars($item['name']) ?> x<?= $item['quantity'] ?></span>
-                        <span>LKR <?= number_format($itemTotal, 2) ?></span>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-            <?php
-            $tax = $subtotal * 0.1; // Assuming 10% tax
-            $total = $subtotal + $tax;
-            ?>
-            <div class="text-right mb-4">
-                <p>Subtotal: LKR <?= number_format($subtotal, 2) ?></p>
-                <p>Tax (10%): LKR <?= number_format($tax, 2) ?></p>
-                <p class="font-bold">Total: LKR <?= number_format($total, 2) ?></p>
-            </div>
-            <div class="flex flex-col space-y-2">
-                <a href="cart.php" class="bg-orange-500 text-white text-center py-2 rounded hover:bg-orange-600 transition">Go to Cart</a>
-                <button class="bg-green-500 text-white py-2 rounded hover:bg-green-600 transition">Call to Order</button>
-            </div>
-        <?php else: ?>
-            <p class="text-gray-600">Your order is empty.</p>
-        <?php endif; ?>
+    <div id="cart-summary" class="w-full lg:w-96 bg-white rounded-lg shadow-lg p-6 sticky top-6 self-start">
+        <!-- Cart summary will load here by AJAX -->
+        <h2 class="text-2xl font-bold mb-4 text-orange-600">Order Summary</h2>
+        <p>Loading your cart...</p>
     </div>
     
 </div>
