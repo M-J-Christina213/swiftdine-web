@@ -12,7 +12,8 @@
       <a href="manageOrders.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Manage Orders</a>
       <a href="manageDiscounts.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Manage Discounts</a>
       <a href="manageReviews.php" class="block px-4 py-2 rounded hover:bg-orange-600 transition-all duration-200"> Manage Reviews</a>
-      <a href="auth/logout.php" class="block px-4 py-2 rounded hover:bg-orange-700 bg-orange-600 mt-10 transition-all duration-200"> Logout</a>
+      <a href="/swiftdine-web/views/auth/logout.php" class="block px-4 py-2 rounded hover:bg-orange-700 bg-orange-600 mt-10 transition-all duration-200">Logout</a>
+
     </nav>
   </div>
 </aside>

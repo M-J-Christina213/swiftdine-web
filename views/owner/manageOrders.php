@@ -49,7 +49,7 @@ function cancelEdit(id) {
 <body class="flex font-sans text-gray-900 min-h-screen">
 
   <!-- Sidebar Include -->
-  <?php include('../components/sidebarR.php'); ?>
+  <?php include('../components/sidebarOwner.php'); ?>
 
   <!-- Main Content -->
   <main class="flex-1 bg-white p-10 ml-64 overflow-auto">

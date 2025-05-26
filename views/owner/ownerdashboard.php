@@ -1,5 +1,5 @@
 <?php include '../../config/db.php'; ?>
-<?php include '../components/sidebarR.php'; ?>
+<?php include '../components/sidebarOwner.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">

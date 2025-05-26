@@ -1,154 +1,73 @@
+<?php
+include("db_connection.php");
+session_start();
+
+if (!isset($_SESSION['owner_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$owner_id = $_SESSION['owner_id'];
+
+$result = $conn->query("SELECT * FROM restaurants WHERE owner_id = $owner_id");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Manage Restaurant</title>
+    <meta charset="UTF-8">
+    <title>View My Restaurants</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <?php
-include '../../config/db.php';
+<body class="bg-orange-50 text-gray-800">
+    <div class="max-w-6xl mx-auto p-6">
+        <h2 class="text-3xl font-bold text-orange-600 mb-6">My Restaurants</h2>
 
-$uploadDir = 'uploads/';  // Make sure this folder exists and is writable
+        <a href="add_restaurant.php" class="mb-4 inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded">
+            + Add New Restaurant
+        </a>
 
-// Handle Add
-if (isset($_POST['add'])) {
-    $name = $_POST['name'];
-    $location = $_POST['location'];
-    $contact = $_POST['contact'];
-
-    // Handle image upload
-    $imageName = null;
-    if (!empty($_FILES['image']['name'])) {
-        $imageTmp = $_FILES['image']['tmp_name'];
-        $imageName = time() . '_' . basename($_FILES['image']['name']);
-        move_uploaded_file($imageTmp, $uploadDir . $imageName);
-    }
-
-    $query = "INSERT INTO restaurant (name, location, contact, image) VALUES ('$name', '$location', '$contact', '$imageName')";
-    $conn->query($query);
-    header("Location: manage_restaurant.php");
-    exit();
-}
-
-// Handle Delete
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-
-    // Get image name to delete the file
-    $result = $conn->query("SELECT image FROM restaurants WHERE id=$id");
-    $row = $result->fetch_assoc();
-    if ($row && $row['image']) {
-        @unlink($uploadDir . $row['image']);
-    }
-
-    $conn->query("DELETE FROM restaurants WHERE id=$id");
-    header("Location: manageRestaurant.php");
-    exit();
-}
-
-// Handle Edit
-if (isset($_POST['update'])) {
-    $id = $_POST['id'];
-    $name = $_POST['name'];
-    $location = $_POST['location'];
-   
-
-    // Check if new image uploaded
-    if (!empty($_FILES['image']['name'])) {
-        // Delete old image
-        $result = $conn->query("SELECT image FROM restaurants WHERE id=$id");
-        $row = $result->fetch_assoc();
-        if ($row && $row['image']) {
-            @unlink($uploadDir . $row['image']);
-        }
-
-        $imageTmp = $_FILES['image']['tmp_name'];
-        $imageName = time() . '_' . basename($_FILES['image']['name']);
-        move_uploaded_file($imageTmp, $uploadDir . $imageName);
-
-        $conn->query("UPDATE restaurants SET name='$name', location='$location', image='$imageName' WHERE id=$id");
-    } else {
-        $conn->query("UPDATE restaurants SET name='$name', location='$location' WHERE id=$id");
-    }
-    header("Location: manageRestaurant.php");
-    exit();
-}
-?>
-
-<?php include '../components/sidebarR.php'; ?>
-
-<div class="ml-64 min-h-screen bg-gray-100 p-8">
-    <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold text-orange-600">Manage Restaurant</h1>
+        <div class="overflow-x-auto mt-4 shadow-md rounded-lg border border-orange-200 bg-white">
+            <table class="min-w-full text-sm text-left">
+                <thead class="bg-orange-100 border-b border-orange-300 text-orange-700">
+                    <tr>
+                        <th class="py-3 px-4">ID</th>
+                        <th class="py-3 px-4">Image</th>
+                        <th class="py-3 px-4">Name</th>
+                        <th class="py-3 px-4">Location</th>
+                        <th class="py-3 px-4">Cuisine</th>
+                        <th class="py-3 px-4">Rating</th>
+                        <th class="py-3 px-4">Contact</th>
+                        <th class="py-3 px-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr class="border-b hover:bg-orange-50">
+                            <td class="py-3 px-4"><?= $row['id'] ?></td>
+                            <td class="py-3 px-4">
+                                <?php if (!empty($row['image_url'])): ?>
+                                    <img src="<?= htmlspecialchars($row['image_url']) ?>" alt="<?= htmlspecialchars($row['name']) ?>" class="w-16 h-16 rounded object-cover border border-orange-300 shadow" />
+                                <?php else: ?>
+                                    <div class="w-16 h-16 flex items-center justify-center bg-orange-200 text-orange-600 rounded">
+                                        No Img
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                            <td class="py-3 px-4"><?= htmlspecialchars($row['name']) ?></td>
+                            <td class="py-3 px-4"><?= htmlspecialchars($row['location']) ?></td>
+                            <td class="py-3 px-4"><?= htmlspecialchars($row['cuisine']) ?></td>
+                            <td class="py-3 px-4"><?= htmlspecialchars($row['rating']) ?></td>
+                            <td class="py-3 px-4"><?= htmlspecialchars($row['contact']) ?></td>
+                            <td class="py-3 px-4 space-x-2">
+                                <a href="edit_restaurant.php?id=<?= $row['id'] ?>" class="text-blue-500 hover:underline">Edit</a>
+                                <a href="delete_restaurant.php?id=<?= $row['id'] ?>" class="text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this restaurant?')">Delete</a>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <!-- Add Restaurant -->
-    <form method="POST" enctype="multipart/form-data" class="bg-white shadow rounded p-6 mb-6 space-y-4">
-        <h2 class="text-xl font-semibold text-orange-600">Add Restaurant</h2>
-        <input type="text" name="name" placeholder="Restaurant Name" required class="w-full border border-gray-300 p-2 rounded" />
-        <input type="text" name="location" placeholder="Location" required class="w-full border border-gray-300 p-2 rounded" />
-        <input type="text" name="contact" placeholder="Contact" required class="w-full border border-gray-300 p-2 rounded" />
-        <label class="block text-orange-600 font-medium">Upload Image</label>
-        <input type="file" name="image" accept="image/*" class="w-full border border-gray-300 p-2 rounded cursor-pointer" />
-        <button type="submit" name="add" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded transition duration-300 ease-in-out transform hover:scale-105">Add Restaurant</button>
-    </form>
-
-    <!-- Restaurant List -->
-    <div class="bg-white shadow rounded p-6 overflow-x-auto">
-        <h2 class="text-xl font-semibold text-orange-600 mb-4">Restaurant List</h2>
-        <table class="min-w-full text-left border-collapse">
-            <thead>
-                <tr class="border-b border-orange-300 bg-orange-50">
-                    <th class="py-2 px-4">ID</th>
-                    <th class="py-2 px-4">Image</th>
-                    <th class="py-2 px-4">Name</th>
-                    <th class="py-2 px-4">Location</th>
-                    <th class="py-2 px-4">Contact</th>
-                    <th class="py-2 px-4">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $result = $conn->query("SELECT * FROM restaurants");
-                while ($row = $result->fetch_assoc()):
-                ?>
-                <tr class="border-b hover:bg-orange-100 transition duration-300 ease-in-out">
-                    <td class="py-3 px-4 align-middle"><?= $row['id'] ?></td>
-                    <td class="py-3 px-4 align-middle">
-                        <?php if ($row['image'] && file_exists($uploadDir . $row['image'])): ?>
-                            <img src="<?= $uploadDir . $row['image'] ?>" alt="<?= htmlspecialchars($row['name']) ?>" class="w-16 h-16 rounded object-cover border border-orange-400 shadow-md" />
-                        <?php else: ?>
-                            <div class="w-16 h-16 flex items-center justify-center bg-orange-200 text-orange-700 rounded">No Img</div>
-                        <?php endif; ?>
-                    </td>
-                    <td class="py-3 px-4 align-middle">
-                        <form method="POST" enctype="multipart/form-data" class="flex flex-col space-y-1">
-                            <input type="hidden" name="id" value="<?= $row['id'] ?>" />
-                            <input type="text" name="name" value="<?= htmlspecialchars($row['name']) ?>" required
-                                class="border border-gray-300 p-1 rounded w-full" />
-                    </td>
-                    <td class="py-3 px-4 align-middle">
-                            <input type="text" name="location" value="<?= htmlspecialchars($row['location']) ?>" required
-                                class="border border-gray-300 p-1 rounded w-full" />
-                    </td>
-                    
-                    <td class="py-3 px-4 align-middle space-y-2">
-                            <label class="block text-sm text-orange-600 font-medium cursor-pointer hover:text-orange-800 transition">
-                                Change Image
-                                <input type="file" name="image" accept="image/*" class="hidden" onchange="this.form.submit()" />
-                            </label>
-                            <button type="submit" name="update" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition transform hover:scale-110">Update</button>
-                        </form>
-                        <a href="?delete=<?= $row['id'] ?>" onclick="return confirm('Are you sure?')" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm inline-block transition transform hover:scale-110 mt-2">Delete</a>
-                    </td>
-                </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    </div>
-</div>
-
 </body>
 </html>

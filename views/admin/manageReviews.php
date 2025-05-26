@@ -38,9 +38,9 @@ $result = $conn->query($sql);
 </head>
 <body class="flex">
 
-  <?php include('../components/sidebar.php'); ?>
+  
 
-  <main class="flex-1 p-10 bg-white overflow-x-auto">
+  <main class="flex-1 p-10 ml-64 bg-white overflow-x-auto">
     <h1 class="text-3xl font-bold mb-6 text-orange-600">📝 Manage Reviews</h1>
 
     <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow">

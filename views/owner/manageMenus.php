@@ -81,7 +81,7 @@ if (isset($_POST['update'])) {
 }
 ?>
 
-<?php include '../components/sidebarR.php'; ?>
+<?php include '../components/sidebarOwner.php'; ?>
 
 <div class="ml-64 min-h-screen bg-gray-100 p-8">
     <div class="flex justify-between items-center mb-6">
