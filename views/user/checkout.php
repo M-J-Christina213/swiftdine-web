@@ -7,9 +7,9 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
   <!-- Banner Section -->
-<div class="relative h-[350px]">
+<div class="relative h-[400px]">
     <!-- Background Image -->
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/1600x900/?friends,dinner');">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/1c/a7/c7/1ca7c798e8da4d18b7676e6786a55b00.jpg');">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     </div>
 
@@ -18,6 +18,25 @@
         <h1 class="text-5xl font-extrabold mb-2">One Step to Yum</h1>
         <p class="text-xl font-light italic">Complete your order details below</p>
     </div>
+</div>
+
+<!-- Nav, Cancel & Confirm -->
+<div class="flex justify-between items-center px-6 py-4">
+  <div class="flex gap-3">
+    <a href="home.php" class="text-sm text-red-500 border border-red-500 px-4 py-2 rounded hover:bg-red-100">
+      Cancel
+    </a>
+    <a href="cart.php" class="text-sm text-gray-600 hover:text-black flex items-center">
+      <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg> Back
+    </a>
+    
+  </div>
+
+  <a href="confirmation.php" class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
+    Confirm your Order →
+  </a>
 </div>
 
 <!-- Step Progress Section -->
@@ -55,6 +74,8 @@
     </div>
 </div>
 
+
+
   <!-- Main Content -->
   <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
     <!-- Left side -->
@@ -72,6 +93,32 @@
         </div>
         <textarea placeholder="Order Notes" rows="3" class="mt-4 w-full border border-gray-300 rounded p-2"></textarea>
       </div>
+
+      <!-- Payment Details -->
+<div class="bg-white p-6 rounded shadow">
+  <h2 class="text-2xl font-semibold mb-4">Payment Details</h2>
+  <div class="space-y-4">
+    <!-- Payment Method -->
+    <div>
+      <label class="block text-sm font-medium mb-1">Select Payment Method:</label>
+      <select class="w-full border border-gray-300 rounded p-2">
+        <option value="card">Credit / Debit Card</option>
+        <option value="cod">Cash on Delivery</option>
+        <option value="bank">Bank Transfer</option>
+      </select>
+    </div>
+
+    <!-- Card Details -->
+    <div class="space-y-2">
+      <input type="text" placeholder="Cardholder Name" class="w-full border border-gray-300 rounded p-2">
+      <input type="text" placeholder="Card Number" class="w-full border border-gray-300 rounded p-2">
+      <div class="flex gap-4">
+        <input type="text" placeholder="MM/YY" class="w-1/2 border border-gray-300 rounded p-2">
+        <input type="text" placeholder="CVV" class="w-1/2 border border-gray-300 rounded p-2">
+      </div>
+    </div>
+  </div>
+</div>
 
       <!-- Delivery Options -->
       <div class="bg-white p-6 rounded shadow">
@@ -101,6 +148,7 @@
         </div>
       </div>
     </div>
+
 
     <!-- Right side -->
     <div class="bg-white p-6 rounded shadow">

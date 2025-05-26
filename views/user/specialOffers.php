@@ -1,3 +1,5 @@
+
+
 <?php
 // Simulated user data
 $user = [
@@ -22,19 +24,19 @@ $seconds = $interval->format('%s');
 
 $tourist_offers = [
     [
-        'img' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        'img' => 'https://i.pinimg.com/736x/87/32/67/873267e81c7c5f8a720f8db64ee5a5f3.jpg',
         'title' => 'Hotel Guest Dine-In Discount',
         'desc' => 'Enjoy 15% off your meal when you show your hotel keycard.',
         'validity' => 'Valid till 2025-06-30',
     ],
     [
-        'img' => 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=800&q=80',
+        'img' => 'https://i.pinimg.com/736x/06/43/ec/0643ec2da18de339c9d001364993cec3.jpg',
         'title' => 'Airport Arrival Snack Deal',
         'desc' => 'Free drink with any snack purchase at the airport lounge.',
         'validity' => 'Valid till 2025-07-15',
     ],
     [
-        'img' => 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80',
+        'img' => 'https://i.pinimg.com/736x/6a/3e/e1/6a3ee17d3dbe31a3b666e732a1b8dffe.jpg',
         'title' => 'Tourist Welcome Dinner',
         'desc' => 'Exclusive 20% off on your first dinner at selected restaurants.',
         'validity' => 'Valid till 2025-08-01',
@@ -43,22 +45,22 @@ $tourist_offers = [
 
 $birthday_specials = [
     [
-        'img' => 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80',
+        'img' => 'https://i.pinimg.com/736x/cf/25/d5/cf25d5eaabad7ae5a4974016cf755b08.jpg',
         'title' => 'Dine-In Birthday Special',
     ],
     [
-        'img' => 'https://images.unsplash.com/photo-1529692236671-f262d7aaf9da?auto=format&fit=crop&w=400&q=80',
+        'img' => 'https://i.pinimg.com/736x/d5/39/57/d5395719c151610ef8f44876026a5fd3.jpg',
         'title' => 'Delivery Birthday Special',
     ],
     [
-        'img' => 'https://images.unsplash.com/photo-1498575207497-6d21b6f3c144?auto=format&fit=crop&w=400&q=80',
+        'img' => 'https://i.pinimg.com/736x/10/3b/06/103b06e2d259805e7e3f08a037337b89.jpg',
         'title' => 'Takeaway Birthday Special',
     ],
 ];
 
 $seasonal_offers = [
     [
-        'img' => 'https://images.unsplash.com/photo-1556911220-e15b29be8c5d?auto=format&fit=crop&w=400&q=80',
+        'img' => 'https://i.pinimg.com/736x/96/4e/a2/964ea261d43e08d2069a38f5b14a0165.jpg',
         'name' => 'Awurudu Food Combos – Up to 25% Off',
         'discount' => '25% Off',
         'validity' => '2025-04-10 to 2025-04-25',
@@ -66,7 +68,7 @@ $seasonal_offers = [
         'tag' => 'Awurudu',
     ],
     [
-        'img' => 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80',
+        'img' => 'https://i.pinimg.com/736x/cb/53/fe/cb53fefc0c0a183b3e6eb55c13585265.jpg',
         'name' => 'Christmas Roast Platter – 20% Off',
         'discount' => '20% Off',
         'validity' => '2025-12-01 to 2025-12-31',
@@ -74,7 +76,7 @@ $seasonal_offers = [
         'tag' => 'Christmas',
     ],
     [
-        'img' => 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=400&q=80',
+        'img' => 'https://i.pinimg.com/736x/d9/d1/20/d9d12001278830b3938c4186d5894548.jpg',
         'name' => 'Ramadan Iftar Packages',
         'discount' => 'Special Packages',
         'validity' => '2025-04-01 to 2025-04-30',
@@ -82,7 +84,7 @@ $seasonal_offers = [
         'tag' => 'Ramadan',
     ],
     [
-        'img' => 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80',
+        'img' => 'https://i.pinimg.com/736x/a9/43/1a/a9431a6826bc838119d528862201014f.jpg',
         'name' => 'Independence Day Local Buffet Specials',
         'discount' => '15% Off',
         'validity' => '2025-02-01 to 2025-02-10',
@@ -98,6 +100,7 @@ $group_offers = [
         'offer_price' => 'Rs1,200',
         'old_price' => 'Rs1,500',
         'save' => '20%',
+        'img' => 'https://i.pinimg.com/736x/8c/91/90/8c91906622cb33054d3206d3b089e906.jpg',
     ],
     [
         'title' => 'Family Bundle – Meal for 4',
@@ -105,6 +108,7 @@ $group_offers = [
         'offer_price' => 'Rs2,500',
         'old_price' => 'Rs3,000',
         'save' => '20%',
+        'img' => 'https://i.pinimg.com/736x/f2/47/d1/f247d1aaf2c22821235d2e308482008e.jpg',
     ],
     [
         'title' => 'Couples’ Combo – Romantic Platter Deals',
@@ -112,15 +116,10 @@ $group_offers = [
         'offer_price' => 'Rs1,800',
         'old_price' => 'Rs2,250',
         'save' => '20%',
-    ],
-    [
-        'title' => 'Birthday Party Packages – 10+ Guests Discount',
-        'desc' => 'Celebrate with your friends and save big!',
-        'offer_price' => 'Rs5,000',
-        'old_price' => 'Rs6,250',
-        'save' => '20%',
-    ],
+        'img' => 'https://i.pinimg.com/736x/0e/cf/6a/0ecf6a5384f5d480c144d8498f41f879.jpg',
+    ]
 ];
+
 
 $locked_offers = [
     [
@@ -175,10 +174,12 @@ $locked_offers = [
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans">
+<?php include '../components/header.php'; ?>
+
 
 <!-- Hero Banner -->
 <section class="relative bg-black text-white">
-    <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1600&q=80" alt="Cake Background" class="absolute inset-0 w-full h-full object-cover opacity-30" />
+    <img src="https://i.pinimg.com/736x/c5/86/64/c58664ccf12002f2680a230753038784.jpg" alt="Cake Background" class="absolute inset-0 w-full h-full object-cover opacity-30" />
     <div class="relative container mx-auto py-16 px-6 flex flex-col md:flex-row items-center justify-between">
         <div class="max-w-xl">
             <?php if($user['is_logged_in'] && date('m') === $user['birthday_month']): ?>
@@ -211,14 +212,14 @@ $locked_offers = [
             <?php endif; ?>
         </div>
         <div class="w-full md:w-1/2">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Birthday Cake" class="rounded-lg shadow-lg" />
+            <img src="https://as1.ftcdn.net/jpg/04/52/80/04/1000_F_452800490_YoymrUVa7MYu5dBYKmWQSeK3ym2qiFHx.jpg" alt="Birthday Cake" class="rounded-lg shadow-lg" />
         </div>
     </div>
 </section>
 
 <!-- Tourist Offers -->
 <section class="container mx-auto px-6 py-12">
-    <h2 class="text-3xl font-bold mb-6">Tourist Offers - <?=htmlspecialchars($user_country)?></h2>
+    <h2 class="text-3xl font-bold mb-6">Tourist Offers</h2>
     <div class="flex flex-wrap justify-start gap-6">
         <?php foreach ($tourist_offers as $offer): ?>
         <div class="max-w-sm bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
@@ -271,25 +272,26 @@ $locked_offers = [
 </section>
 
 <!-- Group Dining Offers -->
-<section class="bg-gray-100 py-12">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-6">Group Dining Offers</h2>
-        <div class="flex flex-wrap gap-6 justify-center">
-            <?php foreach ($group_offers as $offer): ?>
-            <div class="w-72 bg-white rounded-lg shadow-md p-4 flex flex-col justify-between">
-                <h3 class="text-xl font-semibold mb-2"><?=htmlspecialchars($offer['title'])?></h3>
-                <p class="text-gray-700 mb-4 flex-grow"><?=htmlspecialchars($offer['desc'])?></p>
-                <div class="flex items-center gap-4">
-                    <span class="text-orange-500 font-bold text-xl"><?=htmlspecialchars($offer['offer_price'])?></span>
-                    <span class="line-through text-gray-400"><?=htmlspecialchars($offer['old_price'])?></span>
-                    <span class="bg-orange-200 text-orange-700 text-xs font-semibold px-2 py-1 rounded"><?=htmlspecialchars($offer['save'])?> Saved</span>
-                </div>
-                <button onclick="openModal('groupOfferModal')" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded">Claim Offer</button>
-            </div>
-            <?php endforeach; ?>
+<section class="container mx-auto px-6 py-12">
+  <h2 class="text-2xl font-bold mb-6">Group Dining Offers</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <?php foreach ($group_offers as $offer): ?>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="<?= htmlspecialchars($offer['img']) ?>" alt="<?= htmlspecialchars($offer['title']) ?>" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2"><?= htmlspecialchars($offer['title']) ?></h3>
+          <p class="mb-2"><?= htmlspecialchars($offer['desc']) ?></p>
+          <div class="flex justify-between text-sm text-gray-700">
+            <span class="font-bold text-orange-600"><?= $offer['offer_price'] ?></span>
+            <span class="line-through"><?= $offer['old_price'] ?></span>
+            <span class="text-green-600"><?= $offer['save'] ?> Save</span>
+          </div>
         </div>
-    </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
 </section>
+
 
 <!-- Locked Offers -->
 <section class="container mx-auto px-6 py-12">

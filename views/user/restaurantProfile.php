@@ -43,20 +43,23 @@ if ($result->num_rows === 1) {
     </div>
 </div>
 
-<!-- Back and Cancel Buttons -->
-<div class="flex justify-between items-center px-10 py-4">
-    <!-- Back Arrow -->
-    <a href="home.php" class="flex items-center text-gray-700 hover:text-black text-sm font-semibold">
-        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-        </svg>
-        Back
+<!-- Nav, Cancel & Confirm -->
+<div class="flex justify-between items-center px-6 py-4">
+  <div class="flex gap-3">
+    <a href="home.php" class="text-sm text-red-500 border border-red-500 px-4 py-2 rounded hover:bg-red-100">
+      Cancel
     </a>
+    <a href="browseMenus.php" class="text-sm text-gray-600 hover:text-black flex items-center">
+      <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg> Back
+    </a>
+    
+  </div>
 
-    <!-- Cancel Button -->
-    <a href="home.php" class="text-sm text-gray-600 hover:text-red-600 font-semibold">
-        Cancel
-    </a>
+  <a href="menu.php" class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
+    view menu →
+  </a>
 </div>
 
 
@@ -329,7 +332,7 @@ if ($result->num_rows === 1) {
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-10">
   <!-- Sri Lankan Food -->
   <div class="bg-white rounded-xl shadow-md p-4 flex flex-col">
-    <img src="https://images.unsplash.com/photo-1598511727763-512c95f26d2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Kottu Roti" class="rounded-lg h-40 object-cover mb-3">
+    <img src="https://i.pinimg.com/736x/d6/d0/75/d6d0759eea5d87f87488272a9fa5eb71.jpg" alt="Kottu Roti" class="rounded-lg h-40 object-cover mb-3">
     <div class="flex justify-between items-center">
       <h3 class="font-bold text-lg text-gray-800">Chicken Kottu</h3>
       <span class="text-orange-600 font-semibold">LKR 980</span>
@@ -345,7 +348,7 @@ if ($result->num_rows === 1) {
 
   <!-- Indian Food -->
   <div class="bg-white rounded-xl shadow-md p-4 flex flex-col">
-    <img src="https://images.unsplash.com/photo-1608759265463-132481c5eb30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Masala Dosa" class="rounded-lg h-40 object-cover mb-3">
+    <img src="https://i.pinimg.com/736x/ed/85/d3/ed85d360367e23b6a593d402d4b20554.jpg" alt="Masala Dosa" class="rounded-lg h-40 object-cover mb-3">
     <div class="flex justify-between items-center">
       <h3 class="font-bold text-lg text-gray-800">Masala Dosa</h3>
       <span class="text-orange-600 font-semibold">LKR 850</span>
@@ -361,7 +364,7 @@ if ($result->num_rows === 1) {
 
   <!-- Chinese Food -->
   <div class="bg-white rounded-xl shadow-md p-4 flex flex-col">
-    <img src="https://images.unsplash.com/photo-1604908177225-c094ac6464a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Fried Rice" class="rounded-lg h-40 object-cover mb-3">
+    <img src="https://i.pinimg.com/736x/2e/b2/69/2eb26947d6afd1f62450039e145ac25a.jpg" alt="Fried Rice" class="rounded-lg h-40 object-cover mb-3">
     <div class="flex justify-between items-center">
       <h3 class="font-bold text-lg text-gray-800">Chinese Fried Rice</h3>
       <span class="text-orange-600 font-semibold">LKR 1,100</span>
@@ -380,12 +383,12 @@ if ($result->num_rows === 1) {
   <h2 class="text-2xl font-bold text-gray-800 mb-6">Gallery</h2>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
     <!-- 6 gallery images -->
-    <img src="restaurant1.jpg" class="rounded-xl object-cover h-40 w-full">
-    <img src="restaurant2.jpg" class="rounded-xl object-cover h-40 w-full">
-    <img src="restaurant3.jpg" class="rounded-xl object-cover h-40 w-full">
-    <img src="restaurant4.jpg" class="rounded-xl object-cover h-40 w-full">
-    <img src="restaurant5.jpg" class="rounded-xl object-cover h-40 w-full">
-    <img src="restaurant6.jpg" class="rounded-xl object-cover h-40 w-full">
+    <img src="https://i.pinimg.com/736x/1d/5c/17/1d5c171ff3498f3fc930dafb644538d8.jpg" class="rounded-xl object-cover h-40 w-full">
+    <img src="https://i.pinimg.com/736x/09/7b/98/097b98a664e178cc5b3c0148626a931e.jpg" class="rounded-xl object-cover h-40 w-full">
+    <img src="https://i.pinimg.com/736x/e1/2c/b5/e12cb5bf6722cc47bfcf54562f777160.jpg" class="rounded-xl object-cover h-40 w-full">
+    <img src="https://i.pinimg.com/736x/84/6f/1b/846f1b761b1b851b7f3e5f1c42fc1744.jpg" class="rounded-xl object-cover h-40 w-full">
+    <img src="https://i.pinimg.com/736x/a2/83/cd/a283cd857de7d58dd1d20b5399c0befe.jpg" class="rounded-xl object-cover h-40 w-full">
+    <img src="https://i.pinimg.com/736x/df/20/3a/df203a316e2b6e17c10bbe7d88fd057e.jpg" class="rounded-xl object-cover h-40 w-full">
   </div>
 </div>
 
@@ -442,7 +445,7 @@ if ($result->num_rows === 1) {
     <!-- Review Card -->
     <div class="border rounded-xl p-5 bg-white shadow-sm">
       <div class="flex items-center gap-3 mb-2">
-        <img src="profile1.jpg" alt="User" class="w-10 h-10 rounded-full object-cover">
+        <img src="https://i.pinimg.com/736x/3b/51/05/3b510543ec18f623dcadbdcae0a4a1e0.jpg" alt="User" class="w-10 h-10 rounded-full object-cover">
         <div>
           <p class="font-semibold text-gray-800">Nuwan Perera</p>
           <p class="text-xs text-gray-500">Posted on April 15, 2025</p>
@@ -450,7 +453,7 @@ if ($result->num_rows === 1) {
       </div>
       <p class="text-sm text-gray-700 mb-3">Delicious food and friendly staff! Highly recommended for a casual dinner.</p>
       <div class="flex gap-2">
-        <img src="food-shot.jpg" class="w-20 h-20 object-cover rounded-lg">
+        <img src="https://i.pinimg.com/736x/e0/8e/28/e08e28e27fa931cd4dfd982141081c3c.jpg" class="w-20 h-20 object-cover rounded-lg">
       </div>
       <button class="mt-2 text-sm text-gray-600 hover:text-orange-500">Helpful?</button>
     </div>
@@ -458,7 +461,7 @@ if ($result->num_rows === 1) {
     <!-- More reviews... -->
     <div class="border rounded-xl p-5 bg-white shadow-sm">
       <div class="flex items-center gap-3 mb-2">
-        <img src="profile2.jpg" class="w-10 h-10 rounded-full">
+        <img src="https://i.pinimg.com/736x/76/9a/70/769a703c13796a3d42c8daf573993121.jpg" class="w-10 h-10 rounded-full">
         <div>
           <p class="font-semibold text-gray-800">Hashini Silva</p>
           <p class="text-xs text-gray-500">Posted on March 22, 2025</p>
@@ -469,7 +472,7 @@ if ($result->num_rows === 1) {
 
     <div class="border rounded-xl p-5 bg-white shadow-sm">
       <div class="flex items-center gap-3 mb-2">
-        <img src="profile3.jpg" class="w-10 h-10 rounded-full">
+        <img src="https://i.pinimg.com/736x/40/fd/3c/40fd3cddaed5f9a9ef909913fc99bfec.jpg" class="w-10 h-10 rounded-full">
         <div>
           <p class="font-semibold text-gray-800">Sahan Dissanayake</p>
           <p class="text-xs text-gray-500">Posted on February 10, 2025</p>
