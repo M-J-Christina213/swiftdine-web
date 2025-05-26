@@ -1,9 +1,12 @@
+<?php include '../components/sidebarOwner.php'; ?>
+
 <?php
-include("db_connection.php");
+include("../../config/db.php");
+
 session_start();
 
 if (!isset($_SESSION['owner_id'])) {
-    header("Location: login.php");
+    header("Location: ../auth/login.php");
     exit();
 }
 
@@ -20,7 +23,7 @@ $result = $conn->query("SELECT * FROM restaurants WHERE owner_id = $owner_id");
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-orange-50 text-gray-800">
-    <div class="max-w-6xl mx-auto p-6">
+    <div class="max-w-6xl mx-auto p-6 ml-64">
         <h2 class="text-3xl font-bold text-orange-600 mb-6">My Restaurants</h2>
 
         <a href="add_restaurant.php" class="mb-4 inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded">
@@ -37,7 +40,6 @@ $result = $conn->query("SELECT * FROM restaurants WHERE owner_id = $owner_id");
                         <th class="py-3 px-4">Location</th>
                         <th class="py-3 px-4">Cuisine</th>
                         <th class="py-3 px-4">Rating</th>
-                        <th class="py-3 px-4">Contact</th>
                         <th class="py-3 px-4">Actions</th>
                     </tr>
                 </thead>
@@ -58,7 +60,6 @@ $result = $conn->query("SELECT * FROM restaurants WHERE owner_id = $owner_id");
                             <td class="py-3 px-4"><?= htmlspecialchars($row['location']) ?></td>
                             <td class="py-3 px-4"><?= htmlspecialchars($row['cuisine']) ?></td>
                             <td class="py-3 px-4"><?= htmlspecialchars($row['rating']) ?></td>
-                            <td class="py-3 px-4"><?= htmlspecialchars($row['contact']) ?></td>
                             <td class="py-3 px-4 space-x-2">
                                 <a href="edit_restaurant.php?id=<?= $row['id'] ?>" class="text-blue-500 hover:underline">Edit</a>
                                 <a href="delete_restaurant.php?id=<?= $row['id'] ?>" class="text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this restaurant?')">Delete</a>

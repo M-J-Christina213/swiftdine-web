@@ -39,7 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                           exit;
 
                       case 'restaurant':
-                          $_SESSION['owner_logged_in'] = true;  
+                          $_SESSION['owner_logged_in'] = true; 
+                          $_SESSION['owner_id'] = $id; // Store owner ID in session 
                           header('Location: ../owner/ownerDashboard.php');
                           exit;
 

@@ -66,7 +66,6 @@ $result = $conn->query($sql);
 
     <div class="flex justify-between items-center mb-10">
       <h1 class="text-3xl font-bold">Manage Suppliers</h1>
-      <a href="logout.php" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">Logout</a>
     </div>
 
     <!-- Add Supplier Form -->
