@@ -22,7 +22,7 @@ if ($result->num_rows === 1) {
 <!-- Banner Section -->
 <div class="relative h-[350px]">
     <!-- Background Image -->
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo htmlspecialchars($restaurant['image'] ?: 'https://source.unsplash.com/1600x900/?restaurant'); ?>');">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo htmlspecialchars($restaurant['image_url'] ?: 'https://source.unsplash.com/1600x900/?restaurant'); ?>');">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     </div>
 

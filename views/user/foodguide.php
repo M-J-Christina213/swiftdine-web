@@ -12,8 +12,8 @@
 <body class="bg-gray-50 text-gray-800">
 
   <!-- Banner -->
-  <section class="relative h-[400px] md:h-[500px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1470&q=80');">
-    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center">
+  <section class="relative h-[400px] md:h-[500px] bg-cover bg-center" style="background-image: url('../../assets/images/foodguide/foodguide.jpg');">
+    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center">
       <div class="container mx-auto px-6 md:px-12 max-w-6xl flex flex-col md:flex-row justify-start items-center md:items-start space-y-6 md:space-y-0 md:space-x-12">
         <div class="text-white max-w-lg">
           <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">Your Culinary Compass in Sri Lanka</h1>
@@ -38,19 +38,19 @@
       $stories = [
         [
           'title' => 'The Story Behind the Hopper',
-          'img' => 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=60',
+          'img' => 'https://i0.wp.com/www.lavenderandlovage.com/wp-content/uploads/2016/05/Sri-Lankan-Egg-Hoppers-for-Breakfast.jpg?fit=1200%2C901&ssl=1',
           'cta' => 'Read More',
           'link' => '#'
         ],
         [
           'title' => 'Why Sri Lankans Love Spice',
-          'img' => 'https://images.unsplash.com/photo-1562967916-eb82221dfb30?auto=format&fit=crop&w=800&q=60',
+          'img' => 'https://i.pinimg.com/736x/e3/9b/d7/e39bd751d4154f53604c4460f396d77d.jpg',
           'cta' => 'Watch Related Video',
           'link' => '#'
         ],
         [
           'title' => 'From Palmyrah to Pol Sambol: Sri Lankan Essentials',
-          'img' => 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=60',
+          'img' => 'https://i.pinimg.com/736x/b3/2a/2b/b32a2b1e8573adf2751ec9dfe2108a75.jpg',
           'cta' => 'Read More',
           'link' => '#'
         ],
@@ -72,13 +72,17 @@
   <section class="container mx-auto px-6 md:px-12 py-12 flex flex-col md:flex-row gap-12 items-start">
     <div class="md:w-1/2 h-80 md:h-[400px] rounded-lg overflow-hidden shadow-lg">
       <!-- Embedded Google Map -->
+      <!-- Embedded Google Map - Colombo -->
       <iframe
-        class="w-full h-full"
-        src="https://www.google.com/maps/d/embed?mid=1fWmt6cTajM__oR68MnHTWnYqItI"
-        title="Sri Lanka Food Regions Map"
+        class="w-full h-96 rounded-lg"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63360.292155879745!2d79.83105558737792!3d6.927078849687859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2592486aa32d7%3A0x2c1d23773995ec5e!2sColombo!5e0!3m2!1sen!2slk!4v1716721415805!5m2!1sen!2slk"
+        title="Colombo Map"
         frameborder="0"
-        allowfullscreen
-        loading="lazy"></iframe>
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+
     </div>
     <div class="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
       <?php
@@ -108,9 +112,9 @@
     <div class="grid md:grid-cols-3 gap-8">
       <?php
       $videos = [
-        ['title' => 'Trying Spicy Street Kottu in Galle', 'thumbnail' => 'https://images.unsplash.com/photo-1572441710055-94e9bcd46d11?auto=format&fit=crop&w=800&q=60'],
-        ['title' => 'Local Aunties Make the Best Curry', 'thumbnail' => 'https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=800&q=60'],
-        ['title' => 'Tourist Tries Finger Food in Pettah', 'thumbnail' => 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=60'],
+        ['title' => 'Trying Spicy Street Kottu in Galle', 'thumbnail' => 'https://i.pinimg.com/736x/73/e1/3e/73e13e4645a9a5a0369966a69677c716.jpg'],
+        ['title' => 'Local Aunties Make the Best Curry', 'thumbnail' => 'https://i.pinimg.com/736x/04/f3/c9/04f3c9f0133450287343a27522568da4.jpg'],
+        ['title' => 'Tourist Tries Finger Food in Pettah', 'thumbnail' => 'https://i.pinimg.com/736x/35/2a/5c/352a5cbcc5b2e89ce8583206f607e460.jpg'],
       ];
       foreach ($videos as $video): ?>
         <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer">
@@ -145,21 +149,21 @@
         'pronunciation' => '(appa)',
         'description' => 'Savory pancake made of fermented rice batter and coconut milk.',
         'tags' => ['Breakfast', 'South', 'Mild'],
-        'img' => 'https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=600&q=60',
+        'img' => 'https://i0.wp.com/www.lavenderandlovage.com/wp-content/uploads/2016/05/Sri-Lankan-Egg-Hoppers-for-Breakfast.jpg?fit=1200%2C901&ssl=1',
       ],
       [
         'name' => 'Kottu',
         'pronunciation' => '(cut-roti)',
         'description' => 'Chopped roti stir-fried with vegetables, eggs, or meat.',
         'tags' => ['Lunch', 'All Regions', 'Medium'],
-        'img' => 'https://images.unsplash.com/photo-1617191515003-cae3236a0ee9?auto=format&fit=crop&w=600&q=60',
+        'img' => 'https://tb-static.uber.com/prod/image-proc/processed_images/ae1ded3f4b533bb99b692dfb335b7d9b/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg',
       ],
       [
         'name' => 'Pol Sambol',
         'pronunciation' => '(coconut sambol)',
         'description' => 'Spicy shredded coconut condiment with chili, lime, and onion.',
         'tags' => ['All Meals', 'All Regions', 'Spicy'],
-        'img' => 'https://images.unsplash.com/photo-1621415630951-f69e54458f61?auto=format&fit=crop&w=600&q=60',
+        'img' => 'https://i.pinimg.com/736x/44/d5/78/44d578cb5b3d6f8e558f3e07eb45a5a5.jpg',
       ],
     ];
     ?>
@@ -192,19 +196,19 @@
             'name' => 'Chef Amar',
             'position' => 'Head Chef',
             'quote' => '“Why we marinate for hours.”',
-            'img' => 'https://randomuser.me/api/portraits/men/32.jpg',
+            'img' => 'https://i.pinimg.com/736x/d2/35/47/d2354797cfb995122e8bf0248cb1fd76.jpg',
           ],
           [
             'name' => 'Food Blogger from UK',
             'position' => 'Travel & Food Writer',
             'quote' => '“First Time Trying Sri Lankan Hoppers!”',
-            'img' => 'https://randomuser.me/api/portraits/women/44.jpg',
+            'img' => 'https://i.pinimg.com/736x/fd/6e/5f/fd6e5fe0f138ddb952028934fe3ab378.jpg',
           ],
           [
             'name' => 'Local Father',
             'position' => 'Home Cook',
             'quote' => '“This dish reminds me of my childhood.”',
-            'img' => 'https://randomuser.me/api/portraits/men/56.jpg',
+            'img' => 'https://i.pinimg.com/736x/0f/81/57/0f8157d2e41cef1fa30024d9921ef7a3.jpg',
           ],
         ];
         ?>

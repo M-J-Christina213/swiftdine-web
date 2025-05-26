@@ -81,7 +81,7 @@ while ($row = $result->fetch_assoc()) {
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <?php foreach ($menuItems as $item): ?>
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                    <img src="<?= (filter_var($item['image'], FILTER_VALIDATE_URL) ? $item['image'] : 'images/' . htmlspecialchars($item['image'])) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="w-full h-48 object-cover">
+                    <img src="../../assets/images/menus/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h2 class="text-xl font-semibold"><?= htmlspecialchars($item['name']) ?></h2>
                         <p class="text-gray-600 mb-4">LKR <?= number_format($item['price'], 2) ?></p>

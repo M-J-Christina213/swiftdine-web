@@ -20,7 +20,7 @@ $menus = getMenuHighlights($conn);
   <?php include '../components/header.php'; ?>
 
   <!-- Hero Banner -->
-  <section class="relative bg-cover bg-center h-screen" style="background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1470&q=80');">
+  <section class="relative bg-cover bg-center h-screen" style="background-image: url('https://miro.medium.com/v2/resize:fit:1400/0*OuSIEprF8jIzBc4g');">
     <!-- Dark transparent overlay -->
     <div class="absolute inset-0 bg-black bg-opacity-60"></div>
 
@@ -100,7 +100,7 @@ $menus = getMenuHighlights($conn);
      
       
         
-        <img src="<?= !empty($res['image']) ? htmlspecialchars($res['image']) : 'assets/images/restuarants/r1.jpg' ?>"
+        <img src="<?= !empty($res['image_url']) ? htmlspecialchars($res['image_url']) : 'assets/images/restuarants/r1.jpg' ?>"
           alt="<?= htmlspecialchars($res['name']) ?>" class="rounded-md mb-4 object-cover h-48 w-full" />
 
 
@@ -114,9 +114,9 @@ $menus = getMenuHighlights($conn);
              class="flex-grow text-center bg-orange-500 hover:bg-orange-600 text-white rounded-full py-2 font-semibold transition">
              View Menu
           </a>
-          <a href="reserve.php?restaurant_id=<?= $res['id'] ?>" 
+          <a href="restaurantProfile.php?id=<?= $res['id'] ?>" 
              class="flex-grow text-center border border-orange-500 hover:bg-orange-500 hover:text-white rounded-full py-2 font-semibold transition">
-             Reserve Table
+             View Restaurant
           </a>
         </div>
       </div>
@@ -139,7 +139,7 @@ $menus = getMenuHighlights($conn);
         ?>
       <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
         <!-- Image -->
-        <img src="/assets/images/menus/<?= htmlspecialchars($menu['image']) ?>" alt="<?= htmlspecialchars($menu['name']) ?>" class="w-full h-48 object-cover">
+        <img src="../../assets/images/menus/<?= htmlspecialchars($menu['image']) ?>" alt="<?= htmlspecialchars($menu['name']) ?>" class="w-full h-48 object-cover">
 
         <!-- Content -->
         <div class="p-4">
