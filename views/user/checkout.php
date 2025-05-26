@@ -173,29 +173,54 @@
       </div>
 
       <!-- Totals -->
-      <div class="space-y-1 text-sm">
+      <div class="space-y-1 text-sm" id="order-totals">
         <div class="flex justify-between">
           <span>Subtotal</span>
-          <span>Rs 8500</span>
+          <span id="subtotal">Rs 8500</span>
         </div>
         <div class="flex justify-between">
           <span>Discount</span>
-          <span>- Rs 2000</span>
+          <span id="discount">- Rs 2000</span>
         </div>
         <div class="flex justify-between">
           <span>Delivery Fee</span>
-          <span>Rs 300</span>
+          <span id="delivery-fee">Rs 300</span>
         </div>
         <div class="flex justify-between">
           <span>Tax (10%)</span>
-          <span>Rs 650</span>
+          <span id="tax">Rs 650</span>
         </div>
         <hr class="my-2">
         <div class="flex justify-between font-bold text-lg">
           <span>Total</span>
-          <span>Rs 7450</span>
+          <span id="total">Rs 7450</span>
         </div>
       </div>
+
+      <script>
+        // Parse currency string like "Rs 8500" into number 8500
+        function parseRs(value) {
+          return Number(value.replace(/[^\d.-]/g, ''));
+        }
+
+        // Calculate and update total
+        function updateTotal() {
+          const subtotal = parseRs(document.getElementById('subtotal').textContent);
+          const discount = parseRs(document.getElementById('discount').textContent);
+          const deliveryFee = parseRs(document.getElementById('delivery-fee').textContent);
+          const tax = parseRs(document.getElementById('tax').textContent);
+
+          // Total = Subtotal - Discount + Delivery Fee + Tax
+          const total = subtotal - discount + deliveryFee + tax;
+
+          // Update total display with Rs prefix
+          document.getElementById('total').textContent = `Rs ${total}`;
+        }
+
+        // Run on page load
+        updateTotal();
+      </script>
+
 
       <button class="w-full bg-orange-600 text-white py-2 rounded mt-6 hover:bg-orange-700 transition">Place Order Now</button>
     </div>

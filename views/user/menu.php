@@ -163,7 +163,7 @@ while ($row = $cart_result->fetch_assoc()) {
 <!-- Banner Section -->
 <div class="relative h-[350px]">
     <!-- Background Image -->
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/1600x900/?food,restaurant');">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://media.cntravellerme.com/photos/66cc5cb74871ab67bc593f1b/16:9/w_2560%2Cc_limit/ShoulldersByHarpos3.jpg');">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div> <!-- Transparent dark overlay -->
     </div>
 
@@ -188,7 +188,7 @@ while ($row = $cart_result->fetch_assoc()) {
     
   </div>
 
-  <a href="cart.php" class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
+  <a href="checkout.php" class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
     Proceed to Cart →
   </a>
 </div>
