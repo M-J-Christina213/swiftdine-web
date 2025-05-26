@@ -17,9 +17,9 @@
     <div>
       <h3 class="text-xl font-semibold mb-3">Quick Links</h3>
       <ul class="space-y-2 text-gray-400 text-sm">
-        <li><a href="#" class="hover:text-white">Home</a></li>
-        <li><a href="#" class="hover:text-white">Restaurants</a></li>
-        <li><a href="#" class="hover:text-white">Special Offers</a></li>
+        <li><a href="home.php" class="hover:text-white">Home</a></li>
+        <li><a href="restaurants.php" class="hover:text-white">Restaurants</a></li>
+        <li><a href="specialOffers.php" class="hover:text-white">Special Offers</a></li>
         <li><a href="#" class="hover:text-white">About Us</a></li>
         <li><a href="#" class="hover:text-white">Contact Us</a></li>
       </ul>

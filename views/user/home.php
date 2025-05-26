@@ -26,7 +26,7 @@ if (!isset($_SESSION['user_logged_in'])) {
   style="background-image: url('../../assets/images/home/buffet.jpg');"
 >
   <!-- Overlay -->
-  <div class="absolute inset-0 bg -black bg-opacity-60"></div>
+  <div class="absolute inset-0 bg-black bg-opacity-60"></div>
 
   <!-- Content container to control max width inside full width section -->
   <div class="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto gap-10">
@@ -187,7 +187,7 @@ if (!isset($_SESSION['user_logged_in'])) {
   <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
     <!-- Card 1: Colombo -->
     <div class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between">
-      <img src="images/colombo.jpg" alt="Colombo" class="w-full h-40 object-cover">
+      <img src="../../assets/images/home/colombo.jpg" alt="Colombo" class="w-full h-40 object-cover">
       <div class="p-4">
         <div class="flex justify-between items-center mb-1">
           <h3 class="text-lg font-bold text-gray-800">Colombo</h3>
@@ -210,7 +210,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
     <!-- Card 2: Galle -->
     <div class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between">
-      <img src="images/galle.jpg" alt="Galle" class="w-full h-40 object-cover">
+      <img src="../../assets/images/home/galle.jpeg" alt="Galle" class="w-full h-40 object-cover">
       <div class="p-4">
         <div class="flex justify-between items-center mb-1">
           <h3 class="text-lg font-bold text-gray-800">Galle</h3>
@@ -233,7 +233,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
     <!-- Card 3: Ella -->
     <div class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between">
-      <img src="images/ella.jpg" alt="Ella" class="w-full h-40 object-cover">
+      <img src="../../assets/images/home/ella.jpeg" alt="Ella" class="w-full h-40 object-cover">
       <div class="p-4">
         <div class="flex justify-between items-center mb-1">
           <h3 class="text-lg font-bold text-gray-800">Ella</h3>
@@ -256,7 +256,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
     <!-- Card 4: Kandy -->
     <div class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between">
-      <img src="images/kandy.jpg" alt="Kandy" class="w-full h-40 object-cover">
+      <img src="../../assets/images/home/kandy.jpeg" alt="Kandy" class="w-full h-40 object-cover">
       <div class="p-4">
         <div class="flex justify-between items-center mb-1">
           <h3 class="text-lg font-bold text-gray-800">Kandy</h3>
@@ -327,7 +327,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
     <!-- Submit Button -->
     <div class="mt-8">
-      <a href="browseMenu.php" class="w-full block text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition duration-300">
+      <a href="browseMenus.php" class="w-full block text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition duration-300">
         Find My Perfect Meal
       </a>
 
@@ -346,7 +346,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
       <!-- Food Item 1 -->
       <div class="flex items-center gap-4 bg-black/60 rounded-lg p-3">
-        <img src="images/crab-curry.jpg" alt="Crab Curry" class="w-20 h-20 rounded-lg object-cover" />
+        <img src="https://www.questserendipity.com/wp-content/uploads/2021/05/IMG_7654-01-1.jpg" alt="Crab Curry" class="w-20 h-20 rounded-lg object-cover" />
         <div class="flex-1">
           <h3 class="text-orange-200 font-semibold">Crab Curry</h3>
           <p class="text-gray-400 text-sm">Spicy Sri Lankan crab curry cooked to perfection.</p>
@@ -362,7 +362,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
       <!-- Food Item 2 -->
       <div class="flex items-center gap-4 bg-black/60 rounded-lg p-3">
-        <img src="images/prawn-curry.jpg" alt="Prawn Curry" class="w-20 h-20 rounded-lg object-cover" />
+        <img src="https://media.cntravellerme.com/photos/66cc5cb74871ab67bc593f1b/16:9/w_2560%2Cc_limit/ShoulldersByHarpos3.jpg" alt="Prawn Curry" class="w-20 h-20 rounded-lg object-cover" />
         <div class="flex-1">
           <h3 class="text-orange-200 font-semibold">Prawn Curry</h3>
           <p class="text-gray-400 text-sm">Delicious prawn curry with rich coconut flavors.</p>
@@ -378,7 +378,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
       <!-- Food Item 3 -->
       <div class="flex items-center gap-4 bg-black/60 rounded-lg p-3">
-        <img src="images/fish-ambul-thiyal.jpg" alt="Fish Ambul Thiyal" class="w-20 h-20 rounded-lg object-cover" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIinqk2RYJHwwecJnb-2NLISes7BurXUB6Zw&sg" alt="Fish Ambul Thiyal" class="w-20 h-20 rounded-lg object-cover" />
         <div class="flex-1">
           <h3 class="text-orange-200 font-semibold">Fish Ambul Thiyal</h3>
           <p class="text-gray-400 text-sm">Traditional sour fish curry from Sri Lanka.</p>
@@ -405,7 +405,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
         <!-- Food Item -->
         <div class="bg-white rounded-lg shadow-md p-4 flex items-center gap-4">
-          <img src="https://i.imgur.com/3zlW2qF.jpg" alt="Prawn Curry" class="w-20 h-20 object-cover rounded-lg">
+          <img src="https://media.cntravellerme.com/photos/66cc5cb74871ab67bc593f1b/16:9/w_2560%2Cc_limit/ShoulldersByHarpos3.jpg" alt="Prawn Curry" class="w-20 h-20 object-cover rounded-lg">
           <div class="flex-1">
             <h3 class="text-lg font-bold text-green-800">Sri Lankan Prawn Curry</h3>
             <p class="text-sm text-gray-600">Juicy prawns simmered in coconut milk & spices</p>
@@ -415,7 +415,7 @@ if (!isset($_SESSION['user_logged_in'])) {
         </div>
 
         <div class="bg-white rounded-lg shadow-md p-4 flex items-center gap-4">
-          <img src="https://i.imgur.com/E4y3SkC.jpg" alt="Egg Hopper" class="w-20 h-20 object-cover rounded-lg">
+          <img src="https://i0.wp.com/www.lavenderandlovage.com/wp-content/uploads/2016/05/Sri-Lankan-Egg-Hoppers-for-Breakfast.jpg?fit=1200%2C901&ssl=1" alt="Egg Hopper" class="w-20 h-20 object-cover rounded-lg">
           <div class="flex-1">
             <h3 class="text-lg font-bold text-green-800">Egg Hoppers (Appa)</h3>
             <p class="text-sm text-gray-600">Crispy bowl-shaped pancakes with egg center</p>
@@ -425,7 +425,7 @@ if (!isset($_SESSION['user_logged_in'])) {
         </div>
 
         <div class="bg-white rounded-lg shadow-md p-4 flex items-center gap-4">
-          <img src="https://i.imgur.com/s07N6X1.jpg" alt="Chicken Kottu" class="w-20 h-20 object-cover rounded-lg">
+          <img src="https://www.theflavorbender.com/wp-content/uploads/2018/03/Chicken-Kottu-Roti-6086.jpg" alt="Chicken Kottu" class="w-20 h-20 object-cover rounded-lg">
           <div class="flex-1">
             <h3 class="text-lg font-bold text-green-800">Chicken Kottu Roti</h3>
             <p class="text-sm text-gray-600">Spicy chopped roti with chicken & vegetables</p>
@@ -435,7 +435,7 @@ if (!isset($_SESSION['user_logged_in'])) {
         </div>
 
         <div class="bg-white rounded-lg shadow-md p-4 flex items-center gap-4">
-          <img src="https://i.imgur.com/cWGyBtK.jpg" alt="Fried Rice" class="w-20 h-20 object-cover rounded-lg">
+          <img src="https://www.onceuponachef.com/images/2023/12/Fried-Rice-Hero-12.jpg" alt="Fried Rice" class="w-20 h-20 object-cover rounded-lg">
           <div class="flex-1">
             <h3 class="text-lg font-bold text-green-800">Mixed Fried Rice</h3>
             <p class="text-sm text-gray-600">Basmati rice with egg, chicken, and prawns</p>
@@ -445,7 +445,7 @@ if (!isset($_SESSION['user_logged_in'])) {
         </div>
 
         <div class="bg-white rounded-lg shadow-md p-4 flex items-center gap-4">
-          <img src="https://i.imgur.com/zz7nQhK.jpg" alt="Devilled Chicken" class="w-20 h-20 object-cover rounded-lg">
+          <img src="https://www.hungrylankan.com/wp-content/uploads/2020/07/20200705_125604_compress10.jpg" alt="Devilled Chicken" class="w-20 h-20 object-cover rounded-lg">
           <div class="flex-1">
             <h3 class="text-lg font-bold text-green-800">Devilled Chicken</h3>
             <p class="text-sm text-gray-600">Sweet & spicy stir-fried chicken chunks</p>
@@ -481,7 +481,7 @@ if (!isset($_SESSION['user_logged_in'])) {
   <div class="grid md:grid-cols-3 gap-6">
     <!-- Card 1 -->
     <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col justify-between">
-      <img src="images/rtc-randeepa.jpg" alt="RTC Randeepa" class="w-full h-48 object-cover" />
+      <img src="../../assets/images/restaurants/ran.jfif" alt="RTC Randeepa" class="w-full h-48 object-cover" />
       <div class="p-5 flex flex-col flex-grow">
         <div class="flex justify-between items-center mb-2">
           <h3 class="text-lg font-semibold text-gray-800">RTC Randeepa</h3>
@@ -514,7 +514,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
     <!-- Card 2 -->
     <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col justify-between">
-      <img src="images/kingsburgy-honey-beach.jpg" alt="Kingsburgy (Honey Beach)" class="w-full h-48 object-cover" />
+      <img src="../../assets/images/restaurants/kingsbury.jpg" alt="Kingsburgy (Honey Beach)" class="w-full h-48 object-cover" />
       <div class="p-5 flex flex-col flex-grow">
         <div class="flex justify-between items-center mb-2">
           <h3 class="text-lg font-semibold text-gray-800">Kingsburgy (Honey Beach)</h3>
@@ -548,7 +548,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
     <!-- Card 3 -->
     <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col justify-between">
-      <img src="images/marriot-beach.jpg" alt="Marriot Beach" class="w-full h-48 object-cover" />
+      <img src="../../assets/images/restaurants/mb.jpg" alt="Marriot Beach" class="w-full h-48 object-cover" />
       <div class="p-5 flex flex-col flex-grow">
         <div class="flex justify-between items-center mb-2">
           <h3 class="text-lg font-semibold text-gray-800">Marriot Beach</h3>
@@ -705,7 +705,7 @@ if (!isset($_SESSION['user_logged_in'])) {
       <!-- Testimonial 1 -->
       <div class="bg-white p-5 rounded-lg shadow-md text-left">
         <div class="flex items-center gap-3 mb-2">
-          <img src="https://via.placeholder.com/48" alt="Sarah" class="w-12 h-12 rounded-full object-cover">
+          <img src="../../assets/images/home/r1.jpeg" alt="Sarah" class="w-12 h-12 rounded-full object-cover">
           <div>
             <p class="font-semibold text-gray-800">Sarah Chen</p>
             <p class="text-sm text-gray-500">Tourist from Singapore</p>
@@ -718,7 +718,7 @@ if (!isset($_SESSION['user_logged_in'])) {
       <!-- Testimonial 2 -->
       <div class="bg-white p-5 rounded-lg shadow-md text-left">
         <div class="flex items-center gap-3 mb-2">
-          <img src="https://via.placeholder.com/48" alt="Rajitha" class="w-12 h-12 rounded-full object-cover">
+          <img src="../../assets/images/home/r2.jpeg" alt="Rajitha" class="w-12 h-12 rounded-full object-cover">
           <div>
             <p class="font-semibold text-gray-800">Rajitha Perera</p>
             <p class="text-sm text-gray-500">Local</p>
@@ -731,7 +731,7 @@ if (!isset($_SESSION['user_logged_in'])) {
       <!-- Testimonial 3 -->
       <div class="bg-white p-5 rounded-lg shadow-md text-left">
         <div class="flex items-center gap-3 mb-2">
-          <img src="https://via.placeholder.com/48" alt="David & Emma" class="w-12 h-12 rounded-full object-cover">
+          <img src="../../assets/images/home/r3.jpeg" alt="David & Emma" class="w-12 h-12 rounded-full object-cover">
           <div>
             <p class="font-semibold text-gray-800">David & Emma Wilson</p>
             <p class="text-sm text-gray-500">Tourist from Australia</p>
@@ -774,7 +774,7 @@ if (!isset($_SESSION['user_logged_in'])) {
       <div class="grid md:grid-cols-2 gap-6">
         <!-- Restaurant Partner -->
         <div class="relative rounded-lg overflow-hidden group">
-          <img src="https://via.placeholder.com/600x400?text=Chef" class="w-full h-64 object-cover opacity-80" />
+          <img src="https://www.hrcacademy.com/wp-content/uploads/2024/03/professional-cook.jpg" class="w-full h-64 object-cover opacity-80" />
           <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black to-transparent">
             <h3 class="text-white text-xl font-bold">Become a Restaurant Partner</h3>
             <p class="text-white text-sm mb-4">Expand your business and reach more customers.</p>
@@ -784,7 +784,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
         <!-- Rider -->
         <div class="relative rounded-lg overflow-hidden group">
-          <img src="https://via.placeholder.com/600x400?text=Delivery+Rider" class="w-full h-64 object-cover opacity-80" />
+          <img src="https://media.istockphoto.com/id/918839040/photo/delivery-guy.jpg?s=612x612&w=0&k=20&c=qYh6-ZhLfmbQyRMFpyAC3St7FCQuWu9wUuTzRYAFLz4=" class="w-full h-64 object-cover opacity-80" />
           <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black to-transparent">
             <h3 class="text-white text-xl font-bold">Join as a Rider</h3>
             <p class="text-white text-sm mb-4">Help us deliver with speed & care. Competitive pay awaits.</p>
