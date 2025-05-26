@@ -139,7 +139,8 @@ $menus = getMenuHighlights($conn);
         ?>
       <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
         <!-- Image -->
-        <img src="../../assets/images/menus/<?= htmlspecialchars($menu['image']) ?>" alt="<?= htmlspecialchars($menu['name']) ?>" class="w-full h-48 object-cover">
+        <!--img src="../../assets/images/menus/htmlspecialchars($menu['image']) ?>" alt=" htmlspecialchars($menu['name']) ?>" class="w-full h-48 object-cover"-->
+        <img src="<?= (filter_var($menu['image'], FILTER_VALIDATE_URL) ? $menu['image'] : 'images/' . htmlspecialchars($menu['image'])) ?>" alt="<?= htmlspecialchars($menu['name']) ?>" class="w-full h-48 object-cover">
 
         <!-- Content -->
         <div class="p-4">
