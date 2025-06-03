@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 
 <header class="bg-white text-orange-600 shadow-md py-4 px-6 flex items-center justify-between">
   <!-- Left: Logo -->
