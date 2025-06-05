@@ -583,7 +583,7 @@ if (!isset($_SESSION['user_logged_in'])) {
 
   <!-- View all restaurants button -->
   <div class="mt-8 text-center">
-    <a href="resturants.php" class="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-6 py-3 font-semibold text-lg inline-block">View All Restaurants</a>
+    <a href="restaurants.php" class="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-6 py-3 font-semibold text-lg inline-block">View All Restaurants</a>
   </div>
 </section>
 
