@@ -25,7 +25,7 @@ function getRestaurants($conn) {
 }
 
 function getMenuHighlights($conn) {
-    $sql = "SELECT * FROM menus LIMIT 6"; // Adjust table name and logic as needed
+    $sql = "SELECT * FROM menus LIMIT 6"; 
     $result = mysqli_query($conn, $sql);
 
     $menus = [];
